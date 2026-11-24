@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CJ웰케어 | 김치에서 찾은 과학이, 한국인의 하루가 됩니다</title>
+<style>
+@font-face{font-family:"CJ ONLYONE";src:url("assets/fonts/CJ_ONLYONE_400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"CJ ONLYONE";src:url("assets/fonts/CJ_ONLYONE_800.woff2") format("woff2");font-weight:800;font-display:swap}
+/* 흰 바탕 + 더스티 블루 (글자는 검정 대신 짙은 회청색으로 톤 다운) */
+:root{
+  --bg:#FFFFFF; --bg-sec:#F5F6F8; --line:rgba(62,106,158,.08);
+  --accent:#3E6A9E; --ink:#2A3442; --gray:#858D98; --gray-2:#E4E7EB; --soft:#BCC3CC;
+  --font:"CJ ONLYONE","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --gutter:clamp(16px,2vw,28px);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{color:var(--ink);font-family:var(--font);word-break:keep-all;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video,canvas{display:block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* 머리: 로고 · 메뉴 탭 · 버튼 */
+.gnb{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background-color .3s,box-shadow .3s}
+.gnb.scrolled{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 #E4E7EB}
+@media (min-width:1025px){.gnb:has(.m:hover),.gnb:has(.m:focus-within){background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 #E4E7EB}}
+/* 모바일 메뉴가 열리면 흐림 효과를 꺼야 전체 화면 메뉴가 머리 영역에 갇히지 않음 */
+.gnb.open{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+.gnb-in{height:84px;display:flex;align-items:center;gap:clamp(20px,3vw,48px);padding:0 var(--gutter)}
+.logo{display:block;flex:none}
+.logo img{height:clamp(30px,2.8vw,40px);width:auto}
+.tabs{margin-left:auto;height:100%}
+.tabs>ul{display:flex;gap:clamp(20px,2.6vw,40px);height:100%;list-style:none}
+.m{display:flex;align-items:center}
+.m>a{position:relative;padding:10px 0;font:800 16px/1 var(--font);color:var(--ink);text-decoration:none}
+.m>a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.m:hover>a::after,.m:focus-within>a::after,.m.now>a::after{transform:scaleX(1)}
+.m.now>a{color:var(--accent)}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;box-shadow:0 1px 0 #E4E7EB,0 30px 50px -30px rgba(42,52,66,.3);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1),visibility 0s .25s}
+.m:hover .mega,.m:focus-within .mega{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+.mega-in{max-width:1440px;margin:0 auto;padding:36px var(--gutter) 44px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px}
+.mega-lead{font:800 26px/1.3 var(--font);letter-spacing:-.03em;color:var(--ink)}
+.mega-lead span{display:block;margin-top:10px;font:400 15px/1.6 var(--font);color:var(--gray);letter-spacing:0}
+.mega ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 32px;align-content:start}
+.mega li a{display:block;padding:14px 0;border-bottom:1px solid #E4E7EB;text-decoration:none;color:var(--ink)}
+.mega li a b{display:block;font:800 17px/1.3 var(--font)}
+.mega li a span{display:block;margin-top:4px;font:400 14px/1.4 var(--font);color:var(--gray)}
+.mega li a:hover b{color:var(--accent)}
+.cta{flex:none;height:48px;padding:0 20px;border-radius:10px;background:var(--accent);color:#fff;font:800 15px/48px var(--font);text-decoration:none}
+.burger{display:none;flex:none;width:48px;height:48px;border-radius:10px;background:#fff;box-shadow:0 0 0 1px var(--gray-2);border:0;cursor:pointer;position:relative}
+.burger i{position:absolute;left:13px;right:13px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .3s}
+.burger i:first-child{top:18px}.burger i:last-child{top:27px}
+.gnb.open .burger i:first-child{transform:translateY(4.5px) rotate(45deg)}
+.gnb.open .burger i:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+@media (max-width:1024px){
+  .gnb-in{height:72px}
+  .burger{display:block}
+  .cta{margin-left:auto;height:44px;line-height:44px;padding:0 16px;font-size:14px}
+  .tabs{position:fixed;inset:calc(72px + env(safe-area-inset-top,0px)) 0 0;height:auto;background:var(--bg);overflow-y:auto;display:none;padding:8px var(--gutter) 40px}
+  .gnb.open .tabs{display:block}
+  .tabs>ul{flex-direction:column;gap:0;height:auto}
+  .m{display:block;padding:18px 0;border-bottom:1px solid #E4E7EB}
+  .m>a{font-size:22px}
+  .m>a::after{display:none}
+  .mega,.m:hover .mega,.m:focus-within .mega{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;background:none;transition:none}
+  .mega-in{display:block;padding:8px 0 0}
+  .mega-lead{display:none}
+  .mega ul{gap:0 16px}
+  .mega li a{border:0;padding:8px 0}
+  .mega li a b{font-size:15px;font-weight:400;color:var(--ink-2,#3E5470)}
+  .mega li a span{display:none}
+}
+@media (max-width:420px){.cta{display:none}.burger{margin-left:auto}}
+
+.contour{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.contour path{fill:none;stroke:var(--line);stroke-width:1.2}
+
+/* ───── 장면 1–2: 슬로건 → 줌아웃 · 초점 ───── */
+.scene{position:relative;height:380svh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden}
+
+.photo{position:absolute;left:50%;top:50%;z-index:5;overflow:hidden;border-radius:4px;transform:translate(-50%,-50%)}
+.photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .tint{position:absolute;inset:0;background:#DCE3EC;mix-blend-mode:multiply;opacity:0}
+.hero-title{position:absolute;left:0;right:0;top:17%;z-index:6;text-align:center;pointer-events:none;will-change:transform,opacity}
+.hero-title span{display:block;font:800 clamp(38px,6.6vw,100px)/1.14 var(--font);letter-spacing:-.045em;color:var(--accent)}
+.hero-title span+span{font-weight:400;color:var(--ink)}
+.hero-title h1{margin:22px 0 0;font:inherit}
+.vision{display:inline-flex;align-items:center;gap:12px;padding:9px 18px;border-radius:999px;background:#EAF0F7;font:800 clamp(12px,1.05vw,15px)/1.2 var(--font);letter-spacing:.04em;color:var(--accent)}
+.vision i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.lring{position:absolute;z-index:7;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 0 2px #fff,0 0 0 12px rgba(255,255,255,.6),0 24px 50px -22px rgba(42,52,66,.45)}
+.reticle{position:absolute;inset:0;z-index:8;pointer-events:none}
+.hud{position:absolute;z-index:9;font:800 13px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--accent);pointer-events:none}
+.mag{font-size:clamp(18px,1.6vw,24px)}
+.mag small{display:block;margin-bottom:6px;font-size:12px;color:var(--gray)}
+.bar{display:flex;flex-direction:column;align-items:center;gap:8px}
+.bar i{display:block;height:5px;border-radius:3px;background:var(--accent)}
+.badge{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 100px);transform:translateX(-50%);z-index:20;text-align:center;opacity:0;font:800 13px/1 var(--font);letter-spacing:.04em;color:var(--gray)}
+.badge svg{display:block;margin:0 auto 12px}
+.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:20;font:400 13px/1.5 var(--font);color:var(--gray);text-align:center}
+.note{position:absolute;left:50%;z-index:20;transform:translateX(-50%);font:800 16px/1.4 var(--font);color:var(--ink);text-align:center;opacity:0;white-space:nowrap}
+
+/* ───── 장면 3: 과학이 가로로 흐름 ───── */
+.science{position:relative;background:var(--bg-sec)}
+.science .stage{background:var(--bg-sec)}
+.track{position:absolute;left:0;top:0;height:100%;will-change:transform}
+.it{position:absolute}
+.cap{font:800 13px/1.3 var(--font);color:var(--ink);margin-bottom:12px}
+.cap em{font-style:normal;font-weight:400;color:var(--gray)}
+.pic{position:relative;overflow:hidden;border-radius:3px}
+.pic img,.pic video{width:100%;height:100%;object-fit:cover}
+.tone img,.tone video{filter:grayscale(1) contrast(.95) brightness(1.06)}
+.tone::after{content:"";position:absolute;inset:0;background:#E9EBEE;mix-blend-mode:multiply;opacity:.5}
+.big{font:800 clamp(48px,min(13vh,20vw),120px)/1 var(--font);letter-spacing:-.015em;color:var(--accent)}
+.big.ink{color:var(--ink)}
+.big small{font-size:.42em;letter-spacing:-.02em;margin-left:.08em}
+.sub{margin-top:12px;font:800 15px/1.5 var(--font);color:var(--ink)}
+.sub em{font-style:normal;font-weight:400;color:var(--gray)}
+.quote{font:400 clamp(24px,4.4vh,38px)/1.35 var(--font);letter-spacing:-.03em;color:var(--soft)}
+.quote b{font-weight:800;color:var(--ink)}
+.intro h2{font:800 clamp(30px,min(7.4vh,9vw),72px)/1.12 var(--font);letter-spacing:-.04em;color:var(--ink)}
+.intro h2 span{color:var(--accent)}
+.intro p{margin-top:20px;font-size:17px;line-height:1.7;color:var(--gray);max-width:24em}
+.bio-chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 12px 7px 7px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--gray-2);font:800 13px/1 var(--font);color:var(--ink)}
+.bio-chip b{padding:4px 9px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px}
+.prog{position:absolute;left:var(--gutter);bottom:30px;z-index:20;display:flex;align-items:center;gap:10px;font:800 13px/1 var(--font);color:var(--gray)}
+.prog .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.6s ease-in-out infinite}
+.science.paused .prog .dot{animation:none;background:var(--soft)}
+@keyframes pulse{50%{opacity:.25}}
+
+/* ───── 장면 4: 제품이 세로로 흐름 ───── */
+.products{position:relative;height:200svh}
+.products .stage{background:var(--bg)}
+.cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.5vw,22px);padding:0 var(--gutter);z-index:2}
+.col{display:flex;flex-direction:column;gap:clamp(10px,1.5vw,22px);will-change:transform}
+.tile{display:block;border-radius:18px;overflow:hidden;background:#fff;flex:none;box-shadow:0 0 0 1px #E4E7EB;text-decoration:none;position:relative}
+.tile img{width:100%;height:100%;object-fit:contain;padding:12%;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.tile.shot img{object-fit:cover;padding:0}
+.tile:hover img{transform:scale(1.05)}
+.tile span{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink);font:800 12px/1 var(--font);opacity:0;transition:opacity .3s}
+.tile:hover span{opacity:1}
+.fade{position:absolute;left:0;right:0;height:22vh;z-index:5;pointer-events:none}
+.fade.t{top:0;background:linear-gradient(var(--bg) 30%,rgba(255,255,255,0))}
+.fade.b{bottom:0;background:linear-gradient(rgba(255,255,255,0),var(--bg) 75%)}
+.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;width:min(480px,86vw);padding:clamp(28px,5vh,46px) clamp(24px,3vw,40px);border-radius:28px;background:#fff;text-align:center;box-shadow:0 0 0 1px #E4E7EB,0 30px 60px -30px rgba(42,52,66,.35)}
+.center .a{font:800 clamp(36px,4vw,58px)/1.12 var(--font);letter-spacing:-.04em;color:var(--accent)}
+.center .b{margin-top:6px;font:400 clamp(34px,3.9vw,56px)/1.08 var(--font);letter-spacing:-.045em;color:var(--ink)}
+.center p{margin-top:16px;font-size:16px;line-height:1.6;color:var(--gray)}
+.center a{display:inline-block;margin-top:22px;height:50px;padding:0 24px;border-radius:10px;background:var(--accent);color:#fff;font:800 16px/50px var(--font);text-decoration:none}
+@media (max-width:760px){.cols{grid-template-columns:repeat(3,1fr)}.col:nth-child(n+4){display:none}}
+
+/* ───── 연구 근거 요약 · 근거 연결 ───── */
+.wrap-c{max-width:1440px;margin:0 auto;padding:0 var(--gutter)}
+.evi{position:relative;background:var(--bg-sec);padding:clamp(88px,12vh,140px) 0}
+.chain-sec{position:relative;background:#fff;padding:clamp(88px,12vh,140px) 0}
+.eyebrow{display:flex;align-items:center;gap:10px;font:800 14px/1 var(--font);color:var(--accent)}
+.eyebrow i{width:26px;height:2px;background:var(--accent)}
+.evi h2,.chain-sec h2{margin-top:16px;font:800 clamp(32px,3.4vw,50px)/1.2 var(--font);letter-spacing:-.04em;color:var(--ink)}
+.evi h2 span,.chain-sec h2 span{font-weight:400}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.more{height:46px;padding:0 20px;border-radius:10px;box-shadow:inset 0 0 0 1.5px var(--accent);color:var(--accent);font:800 15px/46px var(--font);text-decoration:none}
+.more:hover{background:var(--accent);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.card{border-radius:20px;padding:24px;background:#fff;box-shadow:0 0 0 1px var(--gray-2);display:flex;flex-direction:column}
+.card.feat{background:var(--accent);color:#fff;box-shadow:none}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{padding:5px 10px;border-radius:999px;background:#EAF0F7;color:var(--accent);font:800 12px/1.2 var(--font)}
+.card.feat .tags span{background:rgba(255,255,255,.18);color:#fff}
+.card h3{margin-top:16px;font:800 22px/1.3 var(--font);letter-spacing:-.03em}
+.card dl{margin:14px 0 18px;display:grid;grid-template-columns:72px 1fr;gap:8px 10px;font:400 15px/1.5 var(--font)}
+.card dt{color:var(--gray);font-weight:800}
+.card.feat dt{color:rgba(255,255,255,.72)}
+.card dd{margin:0}
+.card .src{margin-top:auto;padding-top:14px;border-top:1px solid var(--gray-2);font:400 13px/1.4 var(--font);color:var(--gray)}
+.card.feat .src{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.78)}
+.lead{margin-top:14px;font:400 17px/1.65 var(--font);color:var(--gray);max-width:40em}
+.ch-head{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;margin-top:40px;font:800 15px/1 var(--font);color:var(--gray)}
+.ch-head div{display:flex;align-items:center;gap:10px}
+.ch-head b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px}
+.chain{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:stretch;margin-top:14px}
+.cell{border-radius:18px;padding:20px 22px;min-height:120px;display:flex;gap:16px;align-items:center}
+.cell.bio{background:#EAF0F7}.cell.own{background:#F2F4F7}
+.cell.wc{background:#fff;box-shadow:0 0 0 1px var(--gray-2)}
+.cell.cu{background:var(--bg-sec)}
+.cell img{width:76px;height:76px;object-fit:contain;flex:none;border-radius:12px;background:#fff}
+.cell small{display:block;font:800 12px/1.3 var(--font);color:var(--accent);margin-bottom:6px}
+.cell.own small,.cell.cu small{color:var(--gray)}
+.cell.wc small{color:#B4532A}
+.cell p{font:800 19px/1.35 var(--font);letter-spacing:-.02em;color:var(--ink)}
+.cell em{display:block;margin-top:6px;font:400 14px/1.5 var(--font);color:var(--gray);font-style:normal}
+.chain.next .cell{background:#fff;box-shadow:inset 0 0 0 1.5px var(--gray-2);border:0;outline:1.5px dashed var(--soft);outline-offset:-1.5px;box-shadow:none}
+.chain.next small{color:var(--gray)}
+.arr{display:grid;place-items:center;color:var(--soft);font:800 26px var(--font)}
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .ch-head{display:none}
+  .chain{grid-template-columns:1fr;gap:0;margin-top:22px;padding-top:22px;border-top:1px solid var(--gray-2)}
+  .arr{height:30px;transform:rotate(90deg)}
+}
+/* ───── 나만의 접시 ───── */
+.check{position:relative;background:var(--bg-sec);padding:clamp(88px,12vh,140px) 0}
+.check-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:center}
+.check h2{margin-top:16px;font:800 clamp(32px,3.4vw,50px)/1.2 var(--font);letter-spacing:-.04em;color:var(--ink)}
+.check h2 span{font-weight:400}
+.qs{margin-top:16px}
+.qs fieldset{border:0;margin:0;padding:20px 0;border-bottom:1px solid var(--gray-2)}
+.qs fieldset:last-child{border-bottom:0}
+.qs legend{float:left;width:100%;margin-bottom:12px;font:800 18px/1.3 var(--font);color:var(--ink)}
+.opts{clear:both;display:flex;flex-wrap:wrap;gap:8px}
+.opts label{cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-block;height:44px;padding:0 18px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--gray-2);font:400 15px/44px var(--font);color:var(--ink);background:#fff;transition:background-color .2s,color .2s}
+.opts span:hover{box-shadow:inset 0 0 0 1.5px var(--soft)}
+.opts input:checked+span{background:var(--ink);color:#fff;box-shadow:none;font-weight:800}
+.opts input:focus-visible+span{outline:2px solid var(--accent);outline-offset:3px}
+.dish-card{border-radius:28px;background:#fff;box-shadow:0 0 0 1px var(--gray-2),0 30px 60px -34px rgba(42,52,66,.35);padding:28px;text-align:center}
+.dish-card .k{font:800 13px/1 var(--font);color:var(--gray)}
+.dish-card h3{margin-top:6px;font:800 22px/1.3 var(--font);color:var(--ink)}
+.dish-card canvas{display:block;margin:18px auto 0;width:min(240px,60vw);height:auto;aspect-ratio:1}
+.type{margin-top:16px;font:800 24px/1.3 var(--font);color:var(--accent)}
+.type-d{margin-top:4px;font:400 14px/1.5 var(--font);color:var(--gray)}
+.reco{margin-top:18px;display:flex;gap:14px;align-items:center;text-align:left;padding:14px;border-radius:18px;background:var(--bg-sec);text-decoration:none;color:var(--ink)}
+.reco[hidden]{display:none}
+.reco img{width:64px;height:64px;object-fit:contain;border-radius:12px;background:#fff;padding:6px;flex:none}
+.reco b{display:block;font:800 16px/1.3 var(--font)}
+.reco em{display:inline-block;margin-top:6px;padding:4px 9px;border-radius:999px;background:var(--accent);color:#fff;font:800 11px/1.2 var(--font);font-style:normal}
+.btns{margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.btns button,.btns a{height:42px;padding:0 16px;border:0;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--gray-2);font:800 14px/42px var(--font);color:var(--ink);cursor:pointer;text-decoration:none}
+.btns button:disabled{opacity:.45;cursor:default}
+.btns .p{background:var(--accent);color:#fff;box-shadow:none}
+.fine{margin-top:12px;font:400 11px/1.4 var(--font);color:var(--gray)}
+@media (max-width:900px){.check-in{grid-template-columns:1fr}}
+
+/* 제품 근거 표시 */
+.tile .evn i{display:block;margin-top:6px;padding:4px 9px;border-radius:999px;background:var(--accent);color:#fff;font:800 11px/1.2 var(--font);font-style:normal;width:max-content}
+
+
+/* ───── 심사위원 모드: 켜면 구간마다 공모전 가이드 메모가 붙음 ───── */
+.jtoggle{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:10px;height:46px;padding:0 8px 0 18px;border:0;border-radius:999px;background:#2A3442;color:#fff;font:800 14px/1 var(--font);cursor:pointer;box-shadow:0 14px 30px -12px rgba(42,52,66,.6)}
+.jtoggle i{position:relative;display:block;width:44px;height:28px;border-radius:999px;background:#56606E;transition:background-color .25s}
+.jtoggle i::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .25s}
+body.judge .jtoggle i{background:#F2B705}
+body.judge .jtoggle i::after{transform:translateX(16px)}
+.jnote{display:none;position:absolute;z-index:70;width:290px;padding:13px 15px;border-radius:14px;background:#FFF6D6;color:#3D3420;font:400 13px/1.55 var(--font);text-align:left;box-shadow:0 14px 34px -14px rgba(42,52,66,.45),0 0 0 1px #F1E2A8;pointer-events:none;transform:rotate(-.6deg)}
+body.judge .jnote{display:block;animation:jin .3s ease-out}
+@keyframes jin{from{opacity:0;transform:translateY(6px) rotate(-.6deg)}}
+.jnote b{display:block;margin:6px 0 2px;font:800 14px/1.35 var(--font)}
+.jnote .g{display:inline-block;padding:3px 9px;border-radius:999px;color:#fff;font:800 11px/1.3 var(--font)}
+.jnote .g1{background:#2F5BD3}.jnote .g2{background:#7B4FD6}.jnote .g3{background:#E0457B}
+@media (max-width:760px){.jnote{width:230px;font-size:12px}.jtoggle{height:42px;font-size:13px}}
+
+.gnb.scrolled .jnote{display:none!important}
+/* 마무리 */
+footer{position:relative;background:var(--ink);color:rgba(255,255,255,.72);padding:64px var(--gutter) calc(48px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer .wrap{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px}
+footer h3{font:800 clamp(28px,3vw,40px)/1.2 var(--font);color:#fff;letter-spacing:-.03em}
+footer h3 span{color:#A9C1DE}
+footer ul{list-style:none;border-top:1px solid rgba(255,255,255,.18)}
+footer li a{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);color:#fff;text-decoration:none}
+footer li time{color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums}
+footer .to-sci a{color:#fff;font:800 15px var(--font);text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.5);padding-bottom:2px}
+footer .legal{grid-column:1/-1;font-size:12px;color:rgba(255,255,255,.45)}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="gnb" id="gnb">
+  <div class="gnb-in">
+    <a class="logo" href="#top"><img src="assets/img/logo-cjwellcare.png" alt="CJ WELLCARE" width="570" height="192"></a>
+    <nav class="tabs" id="tabs" aria-label="주 메뉴">
+      <ul>
+        <li class="m" data-sec="science,evidence,chain"><a href="science.html">사이언스</a>
+          <div class="mega"><div class="mega-in"><p class="mega-lead">근거로 말하는 웰니스<span>CJ바이오사이언스의 마이크로바이옴 기술과 CJ웰케어의 균주 연구, 그리고 그 결과까지.</span></p>
+            <ul><li><a href="science.html#evidence"><b>연구 근거</b><span>인체적용시험 · 인체 연구 카드</span></a></li><li><a href="science.html#strains"><b>핵심 균주</b><span>CJLP133 · CJLP243 · CJLP55 · CJLS03</span></a></li><li><a href="science.html#platform"><b>마이크로바이옴 플랫폼</b><span>CJ바이오사이언스 Ez-Mx · DIGEST</span></a></li><li><a href="science.html#papers"><b>논문과 인증</b><span>논문 19편 · 개별인정형 · 수상</span></a></li></ul></div></div></li>
+        <li class="m" data-sec="check,products"><a href="solutions.html">솔루션</a>
+          <div class="mega"><div class="mega-in"><p class="mega-lead">모든 제품에는 출발한 연구가 있습니다<span>CJ 균주, CJ바이오사이언스 기술, 기능성 원료, 전통 발효·보양에서 출발한 12개 브랜드.</span></p>
+            <ul><li><a href="solutions.html#origin"><b>출발한 연구별 보기</b><span>CJ 균주 · 바이오사이언스 기술 · 원료 · 전통</span></a></li><li><a href="solutions.html#concern"><b>고민별 보기</b><span>장 건강 · 이너뷰티 · 수면·두뇌 · 기초영양 · K-웰니스</span></a></li><li><a href="#check"><b>나에게 맞는 관리 찾기</b><span>세 번의 선택으로 나만의 접시</span></a></li><li><a href="#products"><b>매일의 제품</b><span>메인에서 흐르는 제품 둘러보기</span></a></li></ul></div></div></li>
+        <li class="m" data-sec="scene"><a href="#top">웰니스</a>
+          <div class="mega"><div class="mega-in"><p class="mega-lead">한국인의 생활에서 출발한 웰니스<span>60년 발효기술과 김치에서 찾은 균주가, 한국인의 하루에 맞춘 습관이 됩니다.</span></p>
+            <ul><li><a href="#top"><b>김치에서 찾은 과학</b><span>CJ웰케어가 보는 웰니스</span></a></li><li><a href="#products"><b>매일의 습관</b><span>식탁과 가방, 침대 옆에서 만나는 웰케어</span></a></li></ul></div></div></li>
+        <li class="m" data-sec="news"><a href="#news">라이브러리</a>
+          <div class="mega"><div class="mega-in"><p class="mega-lead">새로운 소식과 이야기<span>CJ웰케어와 CJ바이오사이언스의 최신 소식입니다.</span></p>
+            <ul><li><a href="#news"><b>최신 소식</b><span>신제품과 연구 소식</span></a></li><li><a href="http://13.125.237.98/media"><b>뉴스룸 전체 보기</b><span>지난 소식 모아 보기</span></a></li></ul></div></div></li>
+        <li class="m"><a href="http://13.125.237.98/company">회사</a>
+          <div class="mega"><div class="mega-in"><p class="mega-lead">CJ웰케어를 소개합니다<span>회사 소개와 고객센터 안내입니다.</span></p>
+            <ul><li><a href="http://13.125.237.98/company"><b>회사 소개</b><span>비전과 연혁</span></a></li><li><a href="http://13.125.237.98/contact"><b>고객센터</b><span>문의하기</span></a></li></ul></div></div></li>
+      </ul>
+    </nav>
+    <a class="cta" href="#check">나에게 맞는 관리 찾기</a>
+    <aside class="jnote" style="right:28px;top:96px" aria-hidden="true"><span class="g g1">가이드 1 · 메뉴 구성</span><b>사이언스를 메뉴 맨 앞에</b>과학적 근거를 먼저 찾을 수 있도록 순서를 바꾸고, 하위 메뉴를 근거 중심으로 나눴습니다.</aside>
+    <button class="burger" id="burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="tabs"><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- 장면 1–2 -->
+<section class="scene" id="scene">
+  <div class="stage" id="stage">
+    <svg class="contour" data-seed="31" aria-hidden="true"></svg>
+    <div class="hero-title" id="heroTitle"><p class="vision"><i></i>The K-Lifestyle Wellness Solution Provider</p><h1><span>김치에서 찾은 과학이,</span><span>한국인의 하루가 됩니다</span></h1></div>
+    <aside class="jnote" style="left:3%;top:62%" aria-hidden="true"><span class="g g3">가이드 3 · 비전 반영</span><b>캐치프레이즈를 첫 화면에</b>슬로건 위에 비전 문구를 두고, 김치·발효라는 K-라이프스타일의 근거를 슬로건 자체로 말합니다.</aside>
+    <div class="photo" id="photo">
+      <video id="vid" muted loop playsinline autoplay preload="auto" poster="assets/img/hero-lab-new-cut-poster.jpg" aria-label="CJ웰케어 연구소에서 연구원들이 실험하는 모습"><source src="assets/video/hero-lab-new-cut.mp4" type="video/mp4"></video>
+      <div class="tint" id="tint"></div>
+    </div>
+    <div class="lring" id="lring" aria-hidden="true"></div>
+    <svg class="reticle" id="reticle" aria-hidden="true"></svg>
+    <div class="hud mag" id="mag"><small>배율</small><span id="magNum">×1,000</span></div>
+    <div class="hud bar" id="bar"><i id="barLine"></i><b id="barLabel">10 μm</b></div>
+    <div class="badge" id="badge">
+      <svg width="46" height="30" viewBox="0 0 46 30" aria-hidden="true"><rect x="2" y="6" width="26" height="14" rx="7" fill="none" stroke="#3E6A9E" stroke-width="3.5"/><rect x="22" y="12" width="22" height="12" rx="6" fill="none" stroke="#3E6A9E" stroke-width="3.5"/></svg>
+      CJ웰케어 × CJ바이오사이언스
+    </div>
+    <p class="note" id="note">미생물의 세계에서, 사람의 하루로</p>
+    <p class="cue" id="cue">스크롤하면 렌즈가 열립니다</p>
+  </div>
+</section>
+
+<!-- 장면 3: 과학 -->
+<section class="science" id="science" aria-label="CJ웰케어와 CJ바이오사이언스의 과학">
+  <div class="stage">
+    <svg class="contour" data-seed="9" aria-hidden="true"></svg>
+    <div class="track" id="track">
+      <div class="it intro" data-x="6" data-y="22" data-w="58">
+        <h2>보이지 않는 것을<br><span>과학으로</span> 봅니다</h2>
+        <p>김치에서 찾은 균주를 CJ웰케어가 검증하고, CJ바이오사이언스가 AI로 장 속 미생물을 읽습니다.</p>
+      </div>
+      <figure class="it" data-x="76" data-y="14" data-w="34"><p class="cap">김치에서 분리한 유산균 <em>· 약 3,500개</em></p><div class="pic tone" style="height:44vh"><img src="assets/img/macro-microscope.jpg" alt="현미경 재물대 위의 시료"></div></figure>
+      <div class="it" data-x="122" data-y="20"><p class="big">CJLP133</p><p class="sub">국내 개발 유산균주 최초 개별인정형 <em>· 2013</em></p></div>
+      <figure class="it" data-x="128" data-y="56" data-w="30"><p class="cap">인체적용시험 <em>· 무작위 배정 · 이중맹검 · 위약대조</em></p><div class="pic tone" style="height:28vh"><img src="assets/img/macro-flask.jpg" alt="실험실의 유리 플라스크"></div></figure>
+      <p class="it quote" data-x="192" data-y="24" data-w="52">보이지 않는 것에서 <b>시작해,</b><br>매일의 <b>습관</b>이 됩니다.</p>
+      <figure class="it" data-x="196" data-y="54" data-w="24"><p class="cap">연구 논문 <em>· 전임상부터 인체적용시험까지</em></p><p class="big ink">19<small>편</small></p></figure>
+      <figure class="it" data-x="254" data-y="10" data-w="56"><p class="cap">MAC 식이섬유 <em>· 장내 미생물의 먹이</em></p><div class="pic" style="height:66vh"><img src="assets/img/macro-fiber.jpg" alt="실험실에서 식이섬유 원료를 다루는 모습"></div><span class="bio-chip"><b>CJ바이오사이언스</b>MAC 인체적용연구</span></figure>
+      <div class="it" data-x="324" data-y="18"><p class="big">1.2M+</p><p class="sub">유전체 DB <em>· CJ바이오사이언스</em></p></div>
+      <div class="it" data-x="324" data-y="52"><p class="big ink">12,000<small>+</small></p><p class="sub">보유한 실물 균주 <em>· CJ바이오사이언스</em></p></div>
+      <figure class="it" data-x="392" data-y="16" data-w="40"><p class="cap">DIGEST 장 모사 플랫폼 <em>· 소화 과정을 체외에서 재현</em></p><div class="pic tone" style="height:40vh"><video id="rndVid" muted loop playsinline preload="metadata" poster="assets/img/rnd-poster.jpg"><source src="assets/video/rnd-lab.mp4" type="video/mp4"></video></div></figure>
+      <div class="it" data-x="446" data-y="20" data-w="40"><p class="cap">Ez-Mx 플랫폼 <em>· 한국인의 장 유형</em></p><p class="big">3 → 6</p><p class="sub">AI 분석으로 세분화한 한국인 장 유형 <em>· CJ바이오사이언스</em></p></div>
+      <figure class="it" data-x="450" data-y="62" data-w="26"><p class="cap">시험관 속 균주 <em>· 제품으로 완성</em></p><div class="pic tone" style="height:24vh"><img src="assets/img/macro-tube.jpg" alt="시험관을 다루는 연구원의 손"></div></figure>
+      <div class="it" data-x="502" data-y="30" data-w="40"><p class="big ink">60<small>년</small></p><p class="sub">CJ의 발효기술 <em>· 그리고 20여 년의 R&amp;D</em></p></div>
+    </div>
+    <aside class="jnote" style="right:3%;top:14%" aria-hidden="true"><span class="g g2">가이드 2 · Science Evidence</span><b>연구 사진과 숫자로 과학을 먼저</b>균주 · 논문 · CJ바이오사이언스 데이터가 계속 흐르며 연구 역량을 보여줍니다.</aside>
+    <p class="prog" id="sciHint"><i class="dot"></i><span>마우스를 올리면 멈춥니다</span></p>
+  </div>
+</section>
+
+<!-- 연구 근거 요약 -->
+<section class="evi" id="evidence" aria-labelledby="eviT">
+  <div class="wrap-c">
+    <aside class="jnote" style="right:3%;bottom:24px" aria-hidden="true"><span class="g g2">가이드 2 · Science Evidence</span><b>연구 방식 · 대상 · 출처까지</b>숫자만이 아니라 무엇을 확인했는지, 어디서 나온 근거인지 카드마다 밝힙니다.</aside>
+    <div class="sec-head">
+      <div><p class="eyebrow"><i></i>연구 근거</p><h2 id="eviT">말이 아니라 <span>연구로 보여드립니다</span></h2></div>
+      <a class="more" href="science.html#evidence">연구 근거 전체 보기</a>
+    </div>
+    <div class="cards">
+      <article class="card feat">
+        <div class="tags"><span>인체적용시험</span><span>무작위 배정 · 이중맹검 · 위약대조</span></div>
+        <h3>김치 유래 균주 CJLP133</h3>
+        <dl><dt>확인한 것</dt><dd>국내 개발 유산균주 최초 식약처 개별인정형 (2013)</dd><dt>관련 제품</dt><dd>바이오코어 건강한 생유산균 500억</dd></dl>
+        <p class="src">출처 · CJ웰케어 연구 성과</p>
+      </article>
+      <article class="card">
+        <div class="tags"><span>인체 연구</span><span>정밀 영양</span></div>
+        <h3>실험실 예측이 사람에게서도 나타날까</h3>
+        <dl><dt>대상</dt><dd>186명</dd><dt>확인한 것</dt><dd>실험실이 예측한 장내 미생물 변화가 사람에게서도 나타나는지</dd></dl>
+        <p class="src">출처 · CJ바이오사이언스 보도자료 (2026.06.26)</p>
+      </article>
+      <article class="card">
+        <div class="tags"><span>마이크로바이옴 플랫폼</span><span>AI</span></div>
+        <h3>한국인의 장, 6가지 유형으로</h3>
+        <dl><dt>방법</dt><dd>Ez-Mx 플랫폼 · AI 장내 미생물 분석</dd><dt>확인한 것</dt><dd>한국인 장 유형을 기존 3개에서 6개로 세분화</dd></dl>
+        <p class="src">출처 · CJ바이오사이언스 보도자료 (2026.06.26)</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 근거 연결: 기술 → 제품 → 고객 -->
+<section class="chain-sec" id="chain" aria-labelledby="chainT">
+  <div class="wrap-c">
+    <p class="eyebrow"><i></i>Science Evidence</p>
+    <h2 id="chainT">기술이 제품이 되고, <span>제품이 하루가 되기까지</span></h2>
+    <p class="lead">CJ바이오사이언스의 마이크로바이옴 기술과 CJ웰케어의 균주 연구가 어떤 제품으로 이어졌는지 따라가 보세요.</p>
+    <aside class="jnote" style="right:3%;bottom:24px" aria-hidden="true"><span class="g g2">가이드 2 · Science Evidence</span><b>기술 → 제품 → 고객</b>가이드의 3단계 그림을 맥플랜 · 바이오코어 실제 사례로 옮겼습니다.</aside>
+    <div class="ch-head" aria-hidden="true"><div><b>1</b>기술</div><div></div><div><b>2</b>CJ웰케어 제품</div><div></div><div><b>3</b>고객 · 일상의 가치</div></div>
+    <div class="chain">
+      <div class="cell bio"><div><small>CJ바이오사이언스 · MAC</small><p>장내 미생물이 먹이로 쓰는 식이섬유</p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell wc"><img src="assets/img/products/macplan.png" alt=""><div><small>맥플랜</small><p>마이크로바이옴 기술력을 담은<br>MAC 식이섬유 한 병</p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell cu"><div><small>바쁜 하루의 한 끼</small><p>영양과 미생물의 먹이까지<br>한 번에 채우는 식사</p></div></div>
+    </div>
+    <div class="chain">
+      <div class="cell own"><div><small>CJ웰케어 균주 연구</small><p>김치에서 찾은 균주 CJLP133<em>약 3,500개 중 선별 · 인체적용시험</em></p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell wc"><img src="assets/img/products/biocore-500.jpg" alt=""><div><small>바이오코어</small><p>건강한 생유산균 500억</p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell cu"><div><small>식약처 개별인정형</small><p>국내 개발 유산균주 최초<br>개별인정형 기능성 (2013)</p></div></div>
+    </div>
+    <div class="chain next">
+      <div class="cell bio"><div><small>CJ바이오사이언스 · Ez-Mx</small><p>AI로 세분화한<br>한국인 장 유형 6가지</p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell wc"><div><small>다음 단계</small><p>한국인의 장에 맞춘<br>맞춤형 솔루션</p></div></div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="cell cu"><div><small>K-라이프스타일 웰니스</small><p>나의 장과 생활에<br>꼭 맞는 하루</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 나에게 맞는 관리 찾기: 나만의 접시 -->
+<section class="check" id="check" aria-labelledby="checkT">
+  <div class="wrap-c check-in">
+    <div>
+      <p class="eyebrow"><i></i>나에게 맞는 관리 찾기</p>
+      <h2 id="checkT">세 번의 선택으로 <span>나만의 접시를</span></h2>
+      <p class="lead">답에 따라 접시 속 미생물의 색과 모양이 달라지고, 생활 습관에 맞는 브랜드와 그 근거를 알려드립니다.</p>
+      <form class="qs" id="qs" onsubmit="return false">
+        <fieldset><legend>1. 요즘 가장 신경 쓰이는 건?</legend><div class="opts">
+          <label><input type="radio" name="q1" value="gut"><span>장 컨디션</span></label><label><input type="radio" name="q1" value="beauty"><span>피부와 체중</span></label><label><input type="radio" name="q1" value="sleep"><span>잠과 휴식</span></label><label><input type="radio" name="q1" value="basic"><span>기초 체력</span></label></div></fieldset>
+        <fieldset><legend>2. 식사는 어떻게 하나요?</legend><div class="opts">
+          <label><input type="radio" name="q2" value="ok"><span>규칙적으로 챙겨요</span></label><label><input type="radio" name="q2" value="skip"><span>자주 거르거나 때워요</span></label></div></fieldset>
+        <fieldset><legend>3. 건강 관리는 언제 하나요?</legend><div class="opts">
+          <label><input type="radio" name="q3" value="am"><span>아침</span></label><label><input type="radio" name="q3" value="pm"><span>저녁이나 자기 전</span></label></div></fieldset>
+      </form>
+    </div>
+    <aside class="jnote" style="left:var(--gutter);bottom:20px" aria-hidden="true"><span class="g g2">가이드 2 · Science Evidence</span><b>맞춤형 제품으로 연결</b>생활 습관을 고르면 맞는 브랜드와 그 근거가 함께 나옵니다. 진단이 아님을 항상 표시합니다.</aside>
+    <div class="dish-card" aria-live="polite">
+      <p class="k">CJ웰케어 × CJ바이오사이언스</p>
+      <h3>나의 생활 습관 접시</h3>
+      <canvas id="dish" width="480" height="480" role="img" aria-label="선택에 따라 달라지는 미생물 접시 그림"></canvas>
+      <p class="type" id="dType">세 문항을 골라 보세요</p>
+      <p class="type-d" id="dDesc">답에 따라 접시 속 미생물이 달라집니다</p>
+      <a class="reco" id="dReco" href="solutions.html" hidden><img id="dImg" src="assets/img/products/macplan.png" alt=""><span><b id="dBrand"></b><em id="dEv"></em></span></a>
+      <div class="btns"><button type="button" id="dSave" disabled>이미지 저장</button><a class="p" href="solutions.html">전체 솔루션 보기</a></div>
+      <p class="fine">생활 습관 기반 참고 이미지이며 장 검사나 진단 결과가 아닙니다</p>
+    </div>
+  </div>
+</section>
+
+<!-- 장면 4: 제품 -->
+<section class="products" id="products" aria-label="CJ웰케어 제품">
+  <div class="stage">
+    <svg class="contour" data-seed="12" aria-hidden="true"></svg>
+    <div class="cols" id="cols">
+      <div class="col" data-speed="-1.0">
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/biocore-500.jpg" alt="바이오코어 생유산균 500억"><span class="evn">바이오코어<i>CJLP133 · 개별인정형</i></span></a>
+        <a class="tile shot" href="#" style="height:38vh"><img src="assets/img/shots/biocore.jpg" alt="식탁 위 바이오코어"><span class="evn">바이오코어<i>CJLP133 · 개별인정형</i></span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/omanbo.jpg" alt="관절오만보"><span>관절오만보</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/eyecian.jpg" alt="아이시안"><span>아이시안</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/basic.jpg" alt="기초영양"><span>기초영양</span></a>
+      </div>
+      <div class="col" data-speed="0.7">
+        <a class="tile shot" href="#" style="height:42vh"><img src="assets/img/shots/macplan.jpg" alt="가방에서 꺼내는 맥플랜"><span class="evn">맥플랜<i>MAC · CJ바이오사이언스</i></span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/memorymate.jpg" alt="메모리메이트"><span>메모리메이트</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/macplan.png" alt="맥플랜"><span class="evn">맥플랜<i>MAC · CJ바이오사이언스</i></span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/yamgroo.jpg" alt="얌그루"><span>얌그루</span></a>
+      </div>
+      <div class="col" data-speed="-1.3">
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/hanppuri.jpg" alt="한뿌리"><span>한뿌리</span></a>
+        <a class="tile shot" href="#" style="height:40vh"><img src="assets/img/shots/jeil.jpg" alt="제일건강원"><span>제일건강원</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/jeonripso.jpg" alt="전립소"><span>전립소</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/biocore-500.jpg" alt="바이오코어"><span class="evn">바이오코어<i>CJLP133 · 개별인정형</i></span></a>
+      </div>
+      <div class="col" data-speed="0.9">
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/innerb.jpg" alt="이너비"><span>이너비</span></a>
+        <a class="tile shot" href="#" style="height:40vh"><img src="assets/img/shots/innerb.jpg" alt="이너비 제품 연출"><span>이너비</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/melamate.png" alt="멜라메이트"><span>멜라메이트</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/omanbo.jpg" alt="관절오만보"><span>관절오만보</span></a>
+      </div>
+      <div class="col" data-speed="-0.8">
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/melamate.png" alt="멜라메이트"><span>멜라메이트</span></a>
+        <a class="tile shot" href="#" style="height:46vh"><img src="assets/img/shots/melamate.jpg" alt="협탁 위 멜라메이트"><span>멜라메이트</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/jeonripso.jpg" alt="전립소"><span>전립소</span></a>
+        <a class="tile" href="#" style="height:30vh"><img src="assets/img/products/eyecian.jpg" alt="아이시안"><span>아이시안</span></a>
+      </div>
+    </div>
+    <div class="fade t"></div><div class="fade b"></div>
+    <aside class="jnote" style="left:3%;top:18%;z-index:70" aria-hidden="true"><span class="g g2">가이드 2 · Science Evidence</span><b>제품마다 출발한 근거</b>바이오코어 · 맥플랜에 마우스를 올리면 균주 · 원료 근거가 함께 나옵니다.</aside>
+    <div class="center">
+      <p class="a">연구에서 출발해</p>
+      <p class="b">매일의 제품으로</p>
+      <p>모든 CJ웰케어 제품에는 출발한 연구가 있습니다.<br>장 건강부터 뷰티, 멘탈, 기초영양까지.</p>
+      <a href="solutions.html">브랜드 전체 보기</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>김치에서 찾은 과학이,<br><span>한국인의 하루가 됩니다</span></h3>
+    <ul id="news">
+      <li><a href="http://13.125.237.98/media/1"><time>2026.10.14</time>CJ웰케어, 5070 세대 맞춤 식후 케어 ‘RB101 유산균&amp;효소’ 출시</a></li>
+      <li><a href="https://www.cjbioscience.com/press/?uid=144&amp;mod=document"><time>2026.06.26</time>CJ바이오사이언스, 장내 미생물 기반 ‘정밀 영양 통합 플랫폼’ 공개</a></li>
+      <li><a href="http://13.125.237.98/media/2"><time>2026.09.30</time>CJ웰케어, 한 병으로 채우는 한 끼 영양 ‘맥플랜 뉴트리션 드링크’ 3종 출시</a></li>
+    </ul>
+    <p class="to-sci"><a href="science.html">연구 근거 자세히 보기 →</a></p>
+    <p class="legal">건강기능식품은 질병의 예방 및 치료를 위한 의약품이 아닙니다. 수치는 CJ웰케어·CJ바이오사이언스 홈페이지 및 보도자료 게재 기준입니다. © 2026 CJ웰케어</p>
+  </div>
+</footer>
+<button class="jtoggle" id="jtoggle" type="button" aria-pressed="false">심사위원 모드 <i aria-hidden="true"></i></button>
+
+<script>
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const seg=(p,a,b)=>clamp((p-a)/(b-a));
+const ease=t=>1-Math.pow(1-t,3);
+const easeIO=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const lerp=(a,b,t)=>a+(b-a)*t;
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+const $=id=>document.getElementById(id);
+const progress=el=>{const r=el.getBoundingClientRect();return clamp(-r.top/(el.offsetHeight-innerHeight));};
+
+/* 배경 등고선: 미생물 군락이 자라는 듯한 선 */
+document.querySelectorAll('.contour').forEach(svg=>{
+  const r=rng(+svg.dataset.seed*97+1); svg.setAttribute('viewBox','0 0 1440 810'); svg.setAttribute('preserveAspectRatio','xMidYMid slice'); let d='';
+  for(let c=0;c<7;c++){const cx=r()*1500-30,cy=r()*870-30,base=40+r()*60,rings=3+Math.floor(r()*5),ph=[r()*6,r()*6,r()*6],amp=[.14+r()*.12,.08+r()*.08,.05+r()*.05];
+    for(let k=0;k<rings;k++){const R=base+k*(46+r()*22);let p='';
+      for(let i=0;i<=72;i++){const a=i/72*Math.PI*2,m=1+amp[0]*Math.sin(2*a+ph[0]+k*.2)+amp[1]*Math.sin(3*a+ph[1])+amp[2]*Math.sin(5*a+ph[2]);
+        p+=(i?'L':'M')+(cx+Math.cos(a)*R*m).toFixed(1)+' '+(cy+Math.sin(a)*R*m*.82).toFixed(1);} d+=p+'Z';}}
+  svg.innerHTML=`<path d="${d}"/>`;
+});
+
+/* ── 장면 1–2: 슬로건 → 렌즈가 열리며 영상 → 줌아웃·초점 ── */
+const scene=$('scene'), stage=$('stage'), photo=$('photo'), vid=$('vid'), lring=$('lring'), ret=$('reticle'), title=$('heroTitle');
+let W,H,big,small,lensD,lensEnd,mobile=false,lastY=scrollY,vel=0;
+function reticleSVG(cxp,cyp,R,w,h){
+  const ticks=[];for(let i=-8;i<=8;i++){if(!i)continue;const len=i%4?6:12;ticks.push(`<line x1="${cxp+i*R/9}" y1="${cyp-len}" x2="${cxp+i*R/9}" y2="${cyp+len}"/>`);}
+  const br=(x,y,sx,sy)=>`<path d="M${x} ${y+sy*26} V${y} H${x+sx*26}"/>`;const l=cxp-w/2+16,t=cyp-h/2+16,rr=cxp+w/2-16,b=cyp+h/2-16;
+  return `<g id="retG" stroke="#3E6A9E" stroke-width="1.6" fill="none" opacity="0"><circle cx="${cxp}" cy="${cyp}" r="${R}" stroke-dasharray="2 6"/><line x1="${cxp-R}" y1="${cyp}" x2="${cxp+R}" y2="${cyp}"/><line x1="${cxp}" y1="${cyp-R*.62}" x2="${cxp}" y2="${cyp+R*.62}"/>${ticks.join('')}<g stroke-width="2.6">${br(l,t,1,1)}${br(rr,t,-1,1)}${br(l,b,1,-1)}${br(rr,b,-1,-1)}</g></g>`;}
+function scaleLabel(M){const um=10*1000/M;if(um<1000)return Math.round(um)+' μm';if(um<10000)return (um/1000).toFixed(1).replace('.0','')+' mm';return (um/10000).toFixed(1).replace('.0','')+' cm';}
+function layout(){
+  W=stage.clientWidth;H=stage.clientHeight;mobile=W<760;
+  big={w:mobile?W*.92:Math.min(W*.8,1160*W/1440),h:mobile?H*.62:Math.min(H*.78,640*H/810)};
+  small={w:mobile?W*.78:W*.46,h:mobile?W*.78*.6:W*.46*.56};
+  lensD=Math.min(W,H)*(mobile?.36:.26); lensEnd=Math.hypot(small.w,small.h)*.62;
+  ret.setAttribute('viewBox',`0 0 ${W} ${H}`); ret.innerHTML=reticleSVG(W/2,H/2+H*.02,lensEnd*.78,small.w,small.h);
+  layoutScience(); layoutProducts();
+}
+function sceneFrame(t){
+  const p=progress(scene);
+  const open=easeIO(seg(p,.03,.32));            // 1) 렌즈가 열리며 영상이 펼쳐짐
+  const z=easeIO(seg(p,.42,.74));               // 2) 영상이 작아짐(줌아웃)
+  const oy=lerp(H*.035,H*.02,z), w=lerp(big.w,small.w,z), h=lerp(big.h,small.h,z);
+  const pcx=W/2, pcy=H/2+oy;
+  photo.style.width=w+'px';photo.style.height=h+'px';photo.style.top=pcy+'px';
+  // 렌즈: 처음엔 슬로건 아래의 작은 원 → 영상 가운데로 오며 영상 전체만큼 커짐
+  const breathe=open<.01?Math.sin(t*1.4)*3:0;
+  const lcx=lerp(W/2,pcx,open), lcy=lerp(H*(mobile?.68:.73),pcy,open), R=lerp(lensD/2+breathe,Math.hypot(w,h)/2+2,open);
+  photo.style.clipPath=open<.999?`circle(${R.toFixed(1)}px at ${(lcx-(pcx-w/2)).toFixed(1)}px ${(lcy-(pcy-h/2)).toFixed(1)}px)`:'none';
+  lring.style.left=lcx+'px';lring.style.top=lcy+'px';lring.style.width=lring.style.height=(R*2)+'px';lring.style.opacity=1-seg(p,.18,.3);
+  title.style.opacity=1-seg(p,.02,.16);title.style.transform=`translateY(${-seg(p,.02,.16)*48}px)`;
+  // 3) 흐려졌다가 초점이 맞고, 눈금·배율이 나타남
+  const blur=Math.sin(Math.PI*seg(p,.44,.92))*9;
+  vid.style.filter=`grayscale(${seg(p,.46,.7).toFixed(3)}) blur(${blur.toFixed(2)}px)`; $('tint').style.opacity=seg(p,.5,.75)*.55;
+  const g=$('retG');if(g)g.setAttribute('opacity',seg(p,.74,.9));
+  const M=Math.pow(10,3*(1-ease(seg(p,.42,.9))));
+  $('magNum').textContent='×'+Math.max(1,Math.round(M)).toLocaleString('ko-KR');
+  const mag=$('mag');mag.style.left=(pcx-w/2+18)+'px';mag.style.top=(pcy-h/2+18)+'px';mag.style.opacity=seg(p,.4,.48);
+  const barPx=Math.max(56,small.w*.12);$('barLine').style.width=barPx+'px';$('barLabel').textContent=scaleLabel(Math.max(1,M));
+  const bar=$('bar');bar.style.left=(pcx+w/2-barPx-24)+'px';bar.style.top=(pcy+h/2-46)+'px';bar.style.opacity=seg(p,.4,.48);
+  $('badge').style.opacity=seg(p,.8,.92);$('cue').style.opacity=1-seg(p,.02,.1);
+  const note=$('note');note.style.top=(H/2+small.h/2+H*.02+28)+'px';note.style.opacity=seg(p,.9,.98);
+  vel=vel*.9+Math.abs(scrollY-lastY)*.1;lastY=scrollY;   // 스크롤 속도(제품 흐름에서 사용)
+  if(p>.97&&!vid.paused)vid.pause();else if(p<=.97&&vid.paused&&scene.getBoundingClientRect().bottom>0)vid.play().catch(()=>{});
+}
+
+/* ── 장면 3: 과학이 가로로 계속 흐름 (스크롤하면 빨라지고, 마우스를 올리면 멈춤) ── */
+const sci=$('science'), track=$('track'), items=[...track.querySelectorAll('.it')];
+// 끝없이 이어지도록 같은 항목을 한 벌 더 붙임(복제본은 화면낭독기에서 숨김)
+const clones=items.map(el=>{const k=el.cloneNode(true);k.setAttribute('aria-hidden','true');k.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));k.querySelectorAll('a,button').forEach(n=>n.tabIndex=-1);track.appendChild(k);return k;});
+let sciCycle=0, sciX=0, sciPaused=false, sciLast=performance.now();
+function layoutScience(){
+  const vh=innerHeight/100, unit=Math.min(vh, innerWidth/100*1.7);   // 화면 높이 기준 배치(작은 화면에서도 비율 유지)
+  let maxR=0;
+  items.forEach(el=>{const x=+el.dataset.x*unit,w=el.dataset.w?+el.dataset.w*unit:null;el.style.left=x+'px';el.style.top=el.dataset.y+'%';if(w)el.style.width=w+'px';maxR=Math.max(maxR,x+(w||el.offsetWidth));});
+  sciCycle=maxR+unit*14;                                               // 한 바퀴 길이(마지막 항목 뒤 여백 포함)
+  clones.forEach((k,i)=>{const el=items[i];k.style.left=(parseFloat(el.style.left)+sciCycle)+'px';k.style.top=el.style.top;if(el.style.width)k.style.width=el.style.width;});
+  track.style.width=(sciCycle*2)+'px';
+  sci.style.height=innerHeight+'px';                                   // 이제 스크롤로 넘길 필요가 없어 화면 하나 높이
+}
+const pauseOn=()=>{sciPaused=true;sci.classList.add('paused');}, pauseOff=()=>{sciPaused=false;sci.classList.remove('paused');};
+// 빈 곳이 아니라 사진·글(항목) 위에 올렸을 때만 멈춤
+track.addEventListener('mouseover',e=>{e.target.closest('.it')?pauseOn():pauseOff();}); track.addEventListener('mouseleave',pauseOff);
+sci.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')pauseOn();}); addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')pauseOff();});
+if(matchMedia('(hover:none)').matches) $('sciHint').lastElementChild.textContent='화면을 누르고 있으면 멈춥니다';
+function sciFrame(now){
+  const dt=Math.min(.05,(now-sciLast)/1000); sciLast=now;
+  const r=sci.getBoundingClientRect(), on=r.bottom>0&&r.top<innerHeight;
+  track.querySelectorAll('video').forEach(v=>{if(on&&v.paused){v.muted=true;v.play().catch(()=>{});}else if(!on&&!v.paused)v.pause();});
+  if(!on||!sciCycle) return;
+  const boost=1+Math.min(6,vel*.12);                                   // 스크롤 속도만큼 빨라짐
+  if(!sciPaused) sciX-=74*dt*boost;                                    // 평소: 1초에 약 74px
+  if(sciX<=-sciCycle) sciX+=sciCycle;
+  track.style.transform=`translate3d(${sciX}px,0,0)`;
+}
+
+/* ── 장면 4: 기둥마다 다른 속도·방향으로 세로 이동 ── */
+const prod=$('products'), cols=[...document.querySelectorAll('.col')];
+// 각 기둥의 제품을 한 번 더 이어 붙여 끝없이 흐르게 하고, 한 바퀴 길이(cycle)를 잰다
+cols.forEach((c,i)=>{
+  if(!c.dataset.cloned){[...c.children].forEach(t=>{const k=t.cloneNode(true);k.setAttribute('aria-hidden','true');k.tabIndex=-1;c.appendChild(k);});c.dataset.cloned='1';}
+  c._y=null; c._paused=false;
+  c.addEventListener('mouseenter',()=>c._paused=true); c.addEventListener('mouseleave',()=>c._paused=false);
+  c.addEventListener('focusin',()=>c._paused=true); c.addEventListener('focusout',()=>c._paused=false);
+});
+function layoutProducts(){cols.forEach((c,i)=>{const gap=parseFloat(getComputedStyle(c).rowGap)||0;c._cycle=(c.scrollHeight+gap)/2;if(c._y===null)c._y=-c._cycle*((i*.37)%1);});}
+let lastNow=performance.now();
+function prodFrame(now){
+  const dt=Math.min(.05,(now-lastNow)/1000); lastNow=now;
+  const r=prod.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;   // 안 보일 때는 쉼
+  const boost=1+Math.min(3,vel*.05);                                              // 스크롤하면 살짝 빨라짐
+  cols.forEach(c=>{
+    if(!c._cycle) return;
+    const s=+c.dataset.speed, dir=s<0?-1:1, pxs=34*Math.abs(s);                     // 기둥마다 방향·속도 다름
+    if(!c._paused) c._y+=dir*pxs*dt*boost;
+    if(c._y<=-c._cycle) c._y+=c._cycle; if(c._y>0) c._y-=c._cycle;
+    c.style.transform=`translate3d(0,${c._y}px,0)`;
+  });
+}
+
+const gnb=$('gnb'), burger=$('burger'), tabsM=[...document.querySelectorAll('.m[data-sec]')];
+function setMenu(o){gnb.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');}
+burger.addEventListener('click',()=>setMenu(!gnb.classList.contains('open')));
+document.querySelectorAll('#tabs a').forEach(a=>a.addEventListener('click',()=>{setMenu(false);a.blur();}));
+addEventListener('keydown',e=>{if(e.key==='Escape'){setMenu(false);document.activeElement.blur?.();}});
+function menuFrame(){
+  gnb.classList.toggle('scrolled',scrollY>10);
+  const mid=innerHeight*.5; let cur=null;
+  tabsM.forEach(m=>m.dataset.sec.split(',').forEach(id=>{const el=$(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<mid&&r.bottom>mid)cur=m;}));
+  tabsM.forEach(m=>m.classList.toggle('now',m===cur));
+}
+function loop(now){menuFrame();const t=now/1000; sceneFrame(t); sciFrame(now); prodFrame(now); requestAnimationFrame(loop);}
+
+/* ── 나만의 접시: 같은 답이면 항상 같은 접시 ── */
+(function(){
+  const f=$('qs'), cv=$('dish'), x=cv.getContext('2d'), S=480, c=S/2, R=212;
+  const PAL={gut:['#3E6A9E','#7E9CC2','#2A4A72'],beauty:['#C0607E','#E29AB1','#8E3A57'],sleep:['#6A63B8','#A49FDA','#463F8C'],basic:['#4E8A6E','#8EBFA6','#2F5F48']};
+  const R_={gut:{t:'아침 장 리듬 타입',d:'장 컨디션을 먼저 챙기는 생활 습관',b:'바이오코어',e:'CJLP133 · 개별인정형',img:'assets/img/products/biocore-500.jpg'},
+    meal:{t:'한 끼 채움 타입',d:'끼니를 자주 거르는 생활 습관',b:'맥플랜',e:'MAC · CJ바이오사이언스',img:'assets/img/products/macplan.png'},
+    beauty:{t:'안팎 케어 타입',d:'피부와 몸매를 함께 챙기는 생활 습관',b:'이너비',e:'CJ NMF 포뮬러',img:'assets/img/products/innerb.jpg'},
+    sleep:{t:'나이트 루틴 타입',d:'하루의 마무리를 챙기고 싶은 생활 습관',b:'멜라메이트',e:'식물성 멜라토닌',img:'assets/img/products/melamate.png'},
+    basic:{t:'기본 채움 타입',d:'매일의 기본 영양부터 챙기는 생활 습관',b:'기초영양',e:'기초영양',img:'assets/img/products/basic.jpg'}};
+  let cur=null, ans=null;
+  function rnd(seed){return()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646}}
+  function draw(a){
+    x.clearRect(0,0,S,S);
+    x.beginPath();x.arc(c,c,R,0,7);x.fillStyle='#FBFCFE';x.fill();x.lineWidth=6;x.strokeStyle='#D5DCE5';x.stroke();
+    x.beginPath();x.arc(c,c,R-22,0,7);x.lineWidth=2;x.stroke();
+    if(!a){x.fillStyle='#BCC3CC';x.font='800 40px "CJ ONLYONE",sans-serif';x.textAlign='center';x.fillText('?',c,c+14);return;}
+    let seed=7;for(const ch of a.join('-'))seed=(seed*31+ch.charCodeAt(0))%2147483647;const r=rnd(seed);
+    const pal=PAL[a[0]], varied=a[1]==='ok', n=varied?72:48, clustered=a[2]==='pm';
+    const kinds=varied?['rod','coccus','chain','spiral']:['rod','coccus'];
+    const centers=[[c-62,c-36],[c+66,c+30],[c-14,c+82]];
+    for(let i=0;i<n;i++){
+      let px,py;
+      if(clustered){const k=centers[i%3],ang=r()*6.28,d=r()*72;px=k[0]+Math.cos(ang)*d;py=k[1]+Math.sin(ang)*d;}
+      else{const ang=r()*6.28,d=Math.sqrt(r())*(R-52);px=c+Math.cos(ang)*d;py=c+Math.sin(ang)*d;}
+      const s=8+r()*9,t=kinds[Math.floor(r()*kinds.length)];
+      x.save();x.translate(px,py);x.rotate(r()*3.14);x.fillStyle=pal[Math.floor(r()*3)];x.strokeStyle=x.fillStyle;x.beginPath();
+      if(t==='rod'){x.roundRect(-s*1.6,-s*.5,s*3.2,s,s*.5);x.fill();}
+      else if(t==='coccus'){x.arc(0,0,s*.7,0,7);x.fill();}
+      else if(t==='chain'){for(let k=-1;k<=1;k++){x.moveTo(k*s*1.25+s*.55,0);x.arc(k*s*1.25,0,s*.55,0,7);}x.fill();}
+      else{x.lineWidth=4;x.lineCap='round';x.moveTo(-s*1.6,0);for(let k=0;k<=8;k++)x.lineTo(-s*1.6+k*s*.4,(k%2?1:-1)*s*.4);x.stroke();}
+      x.restore();
+    }
+  }
+  function update(){
+    const a=['q1','q2','q3'].map(n=>(f.querySelector(`input[name=${n}]:checked`)||{}).value);
+    if(a.includes(undefined)){draw(null);return;}
+    ans=a; draw(a);
+    cur=a[0]==='sleep'?R_.sleep:a[0]==='beauty'?R_.beauty:a[0]==='basic'?R_.basic:a[1]==='skip'?R_.meal:R_.gut;
+    $('dType').textContent=cur.t; $('dDesc').textContent=cur.d+(a[2]==='am'?' · 아침형':' · 저녁형');
+    $('dBrand').textContent=cur.b; $('dEv').textContent=cur.e; $('dImg').src=cur.img;
+    $('dReco').hidden=false; $('dSave').disabled=false;
+  }
+  f.addEventListener('change',update); draw(null);
+  // 카드를 이미지로 저장(접시와 결과 문구)
+  $('dSave').addEventListener('click',()=>{
+    if(!cur) return; const W=720,H=900,o=document.createElement('canvas');o.width=W;o.height=H;const g=o.getContext('2d');
+    g.fillStyle='#fff';g.fillRect(0,0,W,H);g.textAlign='center';
+    g.fillStyle='#858D98';g.font='800 22px "CJ ONLYONE",sans-serif';g.fillText('CJ웰케어 × CJ바이오사이언스',W/2,70);
+    g.fillStyle='#2A3442';g.font='800 34px "CJ ONLYONE",sans-serif';g.fillText('나의 생활 습관 접시',W/2,118);
+    g.drawImage(cv,(W-460)/2,150,460,460);
+    g.fillStyle='#3E6A9E';g.font='800 44px "CJ ONLYONE",sans-serif';g.fillText(cur.t,W/2,670);
+    g.fillStyle='#858D98';g.font='400 24px "CJ ONLYONE",sans-serif';g.fillText($('dDesc').textContent,W/2,712);
+    g.fillStyle='#2A3442';g.font='800 28px "CJ ONLYONE",sans-serif';g.fillText('추천 · '+cur.b+'  ('+cur.e+')',W/2,780);
+    g.fillStyle='#A0A7B1';g.font='400 18px "CJ ONLYONE",sans-serif';g.fillText('생활 습관 기반 참고 이미지이며 장 검사나 진단 결과가 아닙니다',W/2,850);
+    const l=document.createElement('a');l.download='나의_생활습관_접시.png';l.href=o.toDataURL('image/png');l.click();
+  });
+})();
+
+/* 심사위원 모드: 페이지를 옮겨도 켜진 상태 유지 */
+(function(){const jb=document.getElementById('jtoggle');
+  function setJ(on){document.body.classList.toggle('judge',on);jb.setAttribute('aria-pressed',on);try{sessionStorage.setItem('judge',on?'1':'0');}catch(e){}}
+  jb.addEventListener('click',()=>setJ(!document.body.classList.contains('judge')));
+  try{if(sessionStorage.getItem('judge')==='1')setJ(true);}catch(e){}})();
+
+vid.muted=true;vid.play().catch(()=>{});
+document.fonts.ready.then(()=>{layout();});
+addEventListener('resize',layout); layout(); requestAnimationFrame(loop);
+</script>
+</body>
+</html>

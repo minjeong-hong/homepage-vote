@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Science | CJ웰케어</title>
+<meta name="description" content="김치에서 시작된 CJ의 마이크로바이옴 과학. CJ바이오사이언스 기술이 CJ웰케어 제품을 거쳐 고객의 일상이 되는 과정.">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .sci-hero { background: linear-gradient(180deg, var(--blue-50) 0%, #fff 100%); }
+  .sci-hero .eu-1 { width: 240px; height: 240px; right: -40px; top: 32px; }
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--blue-100); background: #fff; }
+  .flow__col { padding: var(--sp-5) var(--sp-4); position: relative; }
+  .flow__col + .flow__col { border-left: 1px solid var(--blue-100); }
+  .flow__col:nth-child(1) { background: var(--blue-50); }
+  .flow__col:nth-child(3) { background: var(--yellow-50); }
+  .flow__tag { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-caption); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--blue-700); }
+  .flow__col:nth-child(3) .flow__tag { color: var(--yellow-900); }
+  .flow__col .h3 { margin: 12px 0 8px; }
+  .flow__list { margin-top: var(--sp-4); display: grid; gap: 10px; }
+  .flow__list li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--radius-m); background: rgba(255,255,255,.85); font-size: 15px; }
+  .flow__list li b { display: block; font-weight: 500; font-size: 16px; }
+  .flow__list li span { color: var(--text-secondary); }
+  .flow__list .n { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--cj-blue); color: #fff; font-size: 12px; display: grid; place-items: center; font-weight: 500; margin-top: 1px; }
+  .flow__col:nth-child(2) .n { background: var(--gray-950); }
+  .flow__col:nth-child(3) .n { background: var(--cj-yellow); color: var(--gray-950); }
+  .flow__arrow { position: absolute; right: -20px; top: 56px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid var(--blue-100); display: grid; place-items: center; color: var(--cj-blue); }
+  .flow__arrow svg { width: 18px; height: 18px; }
+  .spotlight { display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--sp-8); align-items: center; margin-top: var(--sp-8); padding: var(--sp-6); border-radius: var(--radius-xl); background: #fff; border: 1px solid var(--line); }
+  .spotlight__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: var(--sp-4) 0; }
+  .spotlight__stats div { padding: 18px; border-radius: var(--radius-m); background: var(--bg-subtle); }
+  .spotlight__stats b { display: block; font-family: var(--font-display); font-size: 32px; line-height: 1; }
+  .spotlight__stats span { font-size: var(--fs-caption); color: var(--text-secondary); }
+  .spot-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .spot-products a { border-radius: var(--radius-m); border: 1px solid var(--line); padding: 10px; text-align: center; font-size: var(--fs-body-3); }
+  .spot-products a:hover { border-color: var(--blue-200); }
+  .spot-products img { aspect-ratio: 1; object-fit: contain; width: 100%; margin-bottom: 8px; }
+  .collab { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gutter); }
+  .collab__card { border-radius: var(--radius-xl); overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .collab__media { height: 300px; overflow: hidden; }
+  .collab__media img { width: 100%; height: 100%; object-fit: cover; }
+  .collab__body { padding: var(--sp-5); }
+  .collab__body .h3 { margin: 12px 0; }
+  .collab__facts { margin-top: var(--sp-3); display: grid; gap: 10px; }
+  .collab__facts li { padding-left: 18px; position: relative; color: var(--text-secondary); }
+  .collab__facts li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--cj-blue); }
+</style>
+</head>
+<body data-page="science">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="page-hero sci-hero" aria-labelledby="sci-title">
+    <span class="eu eu-1" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0V100C45 100 0 55 0 0Z" fill="#FF9700" opacity=".9"/></svg></span>
+    <div class="container rel">
+      <ol class="breadcrumb"><li><a href="index.html">홈</a></li><li>Science</li></ol>
+      <div class="page-hero__grid" style="margin-top:24px">
+        <div>
+          <span class="eyebrow">Science</span>
+          <h1 id="sci-title" class="display">과학이 먼저,<br>웰니스는 그 다음</h1>
+          <p class="lead">CJ웰케어의 모든 제품은 연구실에서 시작합니다. 김치 속 미생물에서 발견한 가능성을 직접 검증하고, CJ바이오사이언스의 마이크로바이옴 기술을 더해 당신의 일상에 맞는 솔루션으로 완성합니다.</p>
+          <div class="btn-row" style="margin-top:32px"><a class="btn btn--primary" href="#chain">기술이 일상이 되는 과정 <i data-ico="arrow"></i></a><a class="btn btn--ghost" href="evidence.html">연구 근거 보기</a></div>
+        </div>
+        <div class="page-hero__media" style="position:relative"><img src="assets/img/gen/science-hero.jpg" alt="김치 시료가 담긴 페트리 접시와 실험 기구가 놓인 연구실"></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="subnav" aria-label="Science 하위 메뉴">
+    <div class="container subnav__inner">
+      <a href="#overview" class="is-active">Overview</a>
+      <a href="#chain">기술 → 제품 → 고객</a>
+      <a href="#microbiome">마이크로바이옴 연구</a>
+      <a href="#strains">균주 라이브러리</a>
+      <a href="#bioscience">CJ바이오사이언스 협업</a>
+      <a href="#process">제품 개발 프로세스</a>
+      <a href="evidence.html">연구 근거 · 논문 ↗</a>
+    </div>
+  </nav>
+
+  <!-- Overview -->
+  <section id="overview" class="section" aria-labelledby="ov-title">
+    <div class="container">
+      <div class="split">
+        <div class="media-round reveal" style="aspect-ratio:4/3"><img src="assets/img/rnd/strain-kimchi.jpg" alt="옹기 그릇에 담긴 배추김치" loading="lazy"></div>
+        <div class="reveal">
+          <span class="eyebrow">From Kimchi to Health</span>
+          <h2 id="ov-title" class="h1" style="margin:16px 0 24px">전통 발효식품에서<br>미생물의 가능성을 발견하다</h2>
+          <p class="body-l">김치는 다양한 미생물이 함께 만들어가는 우리나라의 대표적인 발효식품입니다. CJ는 김치 속 미생물의 다양성에 주목하여 다양한 김치에서 유산균을 분리하고, 균주 하나하나의 특성과 기능을 연구해 왔습니다.</p>
+          <p class="body-l" style="margin-top:16px">그 과정에서 확보한 <b class="mark" style="color:var(--text)">3,500여 개의 유산균</b> 가운데 우수한 특성을 가진 균주를 선별하고, 과학적 연구를 통해 각각의 가능성을 검증해 왔습니다.</p>
+          <div class="proof" style="grid-template-columns:repeat(3,1fr);margin-top:40px">
+            <div class="proof__item" style="padding-left:0"><p class="proof__num" style="font-size:40px">60<small>년</small></p><p class="proof__label">CJ의 발효기술</p></div>
+            <div class="proof__item"><p class="proof__num" style="font-size:40px">20<small>년+</small></p><p class="proof__label">장내 마이크로바이옴 연구</p></div>
+            <div class="proof__item"><p class="proof__num" style="font-size:40px">3,500<small>+</small></p><p class="proof__label">김치 유래 유산균</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chain: 공모전 포인트 ② -->
+  <section id="chain" class="section section--subtle" aria-labelledby="chain-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="eyebrow">Technology → Product → Customer Value</span>
+          <h2 id="chain-title" class="h1" style="margin-top:16px">하나의 균주가<br>당신의 하루가 되기까지</h2>
+          <p class="lead">CJ의 균주 연구와 CJ바이오사이언스의 기술, CJ웰케어의 제품력, 고객의 일상. 세 단계가 끊김 없이 이어지도록 설계합니다.</p>
+        </div>
+      </div>
+      <div class="flow reveal">
+        <div class="flow__col">
+          <span class="flow__tag">01 · Technology</span>
+          <h3 class="h3">CJ R&amp;D × CJ바이오사이언스<br>마이크로바이옴 연구 · 기술</h3>
+          <p class="body-s">CJ 마이크로바이옴 R&amp;D 센터의 20여 년 유산균 연구에 CJ바이오사이언스의 정밀 분석 기술을 더해 유익균과 소재를 발굴하고 검증합니다.</p>
+          <ul class="flow__list">
+            <li><span class="n">1</span><span><b>균주 발굴 · CJ</b><span>김치 유래 유산균 3,500여 개 라이브러리</span></span></li>
+            <li><span class="n">2</span><span><b>정밀 분석 · CJ바이오사이언스</b><span>MAC · CJRB-101 협업 연구</span></span></li>
+            <li><span class="n">3</span><span><b>과학적 검증</b><span>세포 · 비임상 · 인체적용시험</span></span></li>
+          </ul>
+          <span class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="flow__col">
+          <span class="flow__tag">02 · Product</span>
+          <h3 class="h3">CJ웰케어<br>맞춤형 제품 및 솔루션</h3>
+          <p class="body-s">검증된 균주와 기능성 소재를 고민별 제품으로 설계하고, 기획부터 출시까지 전 과정을 직접 관리합니다.</p>
+          <ul class="flow__list">
+            <li><span class="n">1</span><span><b>과학적 근거 기반 기획</b><span>원료의 안전성 · 기능성 · 품질 검토</span></span></li>
+            <li><span class="n">2</span><span><b>제형 개발 · 품질 검증</b><span>상온에서도 살아있는 유산균 독자 기술</span></span></li>
+            <li><span class="n">3</span><span><b>고민별 브랜드</b><span>장 · 피부 · 수면 · 기초영양 · K-웰니스</span></span></li>
+          </ul>
+          <span class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="flow__col">
+          <span class="flow__tag">03 · Customer Value</span>
+          <h3 class="h3">고객<br>더 건강한 라이프스타일</h3>
+          <p class="body-s">특별한 날이 아닌 매일의 습관으로. 아침에 눈을 뜨는 순간부터 잠드는 밤까지 일상 전체를 케어합니다.</p>
+          <ul class="flow__list">
+            <li><span class="n">1</span><span><b>24시간 루틴</b><span>Morning · Day · Night 제품 가이드</span></span></li>
+            <li><span class="n">2</span><span><b>이해하기 쉬운 근거</b><span>연구 결과를 소비자 언어로 공개</span></span></li>
+            <li><span class="n">3</span><span><b>K-라이프스타일</b><span>발효 · 보양의 지혜를 오늘의 루틴으로</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spotlight reveal" id="cjlp133">
+        <div>
+          <span class="chip chip--warm">Spotlight · CJLP133</span> <span class="chip chip--line">CJ 독자 개발 균주</span>
+          <h3 class="h2" style="margin:16px 0">과학적 연구를<br>기능성으로 연결하다</h3>
+          <p class="body-l">CJLP133은 김치에서 유래한 <i style="font-style:normal">Lactiplantibacillus plantarum</i> 균주로, 지속적인 연구와 인체적용시험을 통해 피부 건강에 대한 가능성을 검증해 왔습니다. 식품의약품안전처로부터 ‘면역과민반응에 의한 피부 상태 개선에 도움을 줄 수 있음’의 기능성을 인정받은 개별인정형 원료입니다.</p>
+          <div class="spotlight__stats"><div><b>11</b><span>논문</span></div><div><b>14</b><span>특허</span></div><div><b>2013</b><span>국내 개발 균주 최초 개별인정형</span></div></div>
+          <a class="link-arrow" href="evidence.html#study-cjlp133">CJLP133 인체적용시험 보기 <i data-ico="arrow"></i></a>
+        </div>
+        <div>
+          <p class="caption" style="margin-bottom:12px">CJLP133이 담긴 제품</p>
+          <div class="spot-products">
+            <a href="brand-biocore.html"><img src="assets/img/product/biocore-1.jpg" alt="" loading="lazy">바이오코어 500억 유산균</a>
+            <a href="brand-biocore.html"><img src="assets/img/product/biocore-2.jpg" alt="" loading="lazy">피부면역 100억 유산균</a>
+            <a href="brand-biocore.html"><img src="assets/img/product/biocore-3.jpg" alt="" loading="lazy">쓰리핏 유산균 다이어트</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Microbiome research -->
+  <section id="microbiome" class="section section--science" aria-labelledby="mb-title">
+    <div class="container">
+      <div class="split split--wide-left" style="margin-bottom:64px">
+        <div class="reveal">
+          <span class="eyebrow">Microbiome Research</span>
+          <h2 id="mb-title" class="h1" style="margin:16px 0 24px">과학으로 장 건강의<br>새로운 가능성을 찾습니다</h2>
+          <p class="body-l">인체에 유익한 마이크로바이옴과 프로바이오틱스를 연구하여 건강한 삶에 도움이 되는 새로운 기능성과 균주를 발굴합니다. 수많은 연구 데이터와 최신 과학기술을 활용하여 유망 균주를 찾고, 실험과 연구를 통해 효과를 검증합니다.</p>
+        </div>
+        <div class="media-round reveal" style="aspect-ratio:16/10;position:relative"><img src="assets/img/gen/microbiome-abstract.jpg" alt="막대 모양 유산균을 형상화한 현미경 이미지" loading="lazy"></div>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar"><span class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M10 8h4M10 12h4M10 16h4"/></svg></span><h3 class="h5">건강한 장을 위한<br>유익균 연구</h3><ul><li>다양한 균주와 연구 데이터를 통합 관리</li><li>장 건강에 도움을 주는 유익균주 탐색</li></ul></div>
+        <div class="pillar"><span class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/></svg></span><h3 class="h5">과학적 검증</h3><ul><li>세포 및 비임상 연구를 통한 기능성 평가</li><li>인체 적용 연구를 통한 효과 확인</li></ul></div>
+        <div class="pillar"><span class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></svg></span><h3 class="h5">건강 솔루션 확장</h3><ul><li>수면 · 대사 · 여성 · 피부 건강 등으로 연구 확장</li><li>차세대 마이크로바이옴 기반 건강기능식품 개발</li></ul></div>
+        <div class="pillar"><span class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg></span><h3 class="h5">신뢰할 수 있는<br>연구 결과 제공</h3><ul><li>국제 학술지 및 학회 발표</li><li>전문가 협업을 통한 과학적 근거 강화</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strain library -->
+  <section id="strains" class="section" aria-labelledby="st-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="eyebrow">One Origin. Distinct Strains.</span>
+          <h2 id="st-title" class="h1" style="margin-top:16px">균주마다 다른 가능성,<br>건강을 위한 다양한 연구로</h2>
+          <p class="lead">같은 종의 유산균이라도 균주에 따라 고유한 특성과 기능적 가능성은 달라질 수 있습니다. CJ는 균주 수준의 차이에 주목해 왔습니다.</p>
+        </div>
+        <a class="link-arrow" href="evidence.html">균주별 연구 근거 <i data-ico="arrow"></i></a>
+      </div>
+      <div class="strain-grid reveal">
+        <article class="strain"><div class="strain__media"><img src="assets/img/rnd/strain-cjlp133.jpg" alt="" loading="lazy"><span class="strain__area chip">피부 건강</span></div><div class="strain__body"><p class="strain__id">CJLP133</p><p class="strain__sp"><i>Lactiplantibacillus plantarum</i></p><div class="chip-row strain__badge"><span class="chip chip--warm">개별인정형</span><span class="chip chip--line">인체적용시험</span></div></div></article>
+        <article class="strain"><div class="strain__media"><img src="assets/img/rnd/strain-cjlp55.jpg" alt="" loading="lazy"><span class="strain__area chip">면역 · 피부</span></div><div class="strain__body"><p class="strain__id">CJLP55</p><p class="strain__sp"><i>Lactiplantibacillus plantarum</i></p><div class="chip-row strain__badge"><span class="chip chip--line">Global Application</span></div></div></article>
+        <article class="strain"><div class="strain__media"><img src="assets/img/rnd/strain-cjlp243.jpg" alt="" loading="lazy"><span class="strain__area chip">장 건강</span></div><div class="strain__body"><p class="strain__id">CJLP243</p><p class="strain__sp"><i>Lactiplantibacillus plantarum</i></p><div class="chip-row strain__badge"><span class="chip chip--line">인체적용시험</span></div></div></article>
+        <article class="strain"><div class="strain__media"><img src="assets/img/rnd/strain-cjrb101.jpg" alt="" loading="lazy"><span class="strain__area chip">장-면역 축</span></div><div class="strain__body"><p class="strain__id">CJRB101</p><p class="strain__sp"><i>Leuconostoc mesenteroides</i></p><div class="chip-row strain__badge"><span class="chip chip--line">with CJ Bioscience</span></div></div></article>
+        <article class="strain"><div class="strain__media"><img src="assets/img/rnd/strain-cjls03.jpg" alt="" loading="lazy"><span class="strain__area chip">대사 건강</span></div><div class="strain__body"><p class="strain__id">CJLS03</p><p class="strain__sp"><i>Latilactobacillus sakei</i></p><div class="chip-row strain__badge"><span class="chip chip--line">R&amp;D in Progress</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CJ Bioscience collaboration -->
+  <section id="bioscience" class="section section--subtle" aria-labelledby="bio-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="eyebrow">With CJ Bioscience</span>
+          <h2 id="bio-title" class="h1" style="margin-top:16px">CJ바이오사이언스와 함께<br>연구를 제품으로</h2>
+          <p class="lead">마이크로바이옴 전문기업 CJ바이오사이언스의 연구 역량과 CJ웰케어의 제품 개발력이 만나, 일상에서 경험할 수 있는 솔루션이 됩니다.</p>
+        </div>
+      </div>
+      <div class="collab reveal">
+        <article class="collab__card">
+          <div class="collab__media"><img src="assets/img/kv/macplan.jpg" alt="맥플랜 제품 단체 컷" loading="lazy"></div>
+          <div class="collab__body">
+            <span class="chip">MAC PLAN · 2026</span>
+            <h3 class="h3">국내 최초 MAC 웰니스 브랜드</h3>
+            <p class="body-l">미생물의 영양원인 MAC(Microbiota-Accessible Carbohydrates)을 일상형 제품 형태로 상용화했습니다.</p>
+            <ul class="collab__facts"><li>MAC: 2014년 미국 스탠퍼드대 의과대학 연구진이 제시한 학술 개념</li><li>마이크로바이옴 R&amp;D 센터 기술력 × CJ바이오사이언스 정밀 분석 기술</li></ul>
+          </div>
+        </article>
+        <article class="collab__card">
+          <div class="collab__media"><img src="assets/img/news/news-1.jpg" alt="RB101 유산균&amp;효소 제품" loading="lazy"></div>
+          <div class="collab__body">
+            <span class="chip">CJRB-101 · 2026</span>
+            <h3 class="h3">장-면역 축을 연구하는 균주</h3>
+            <p class="body-l">CJ바이오사이언스가 축적해 온 마이크로바이옴 R&amp;D 역량이 집약된 대표 균주로, ‘RB101 유산균&amp;효소’에 적용했습니다.</p>
+            <ul class="collab__facts"><li>세포 · 동물 · 인체 적용 연구로 과학적 데이터 확보</li><li>일본 · 대만 특허 취득, 한국 · 미국 특허 출원 예정</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product development process -->
+  <section id="process" class="section" aria-labelledby="pr-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="eyebrow">Innovation Process</span>
+          <h2 id="pr-title" class="h1" style="margin-top:16px">소비자의 건강 니즈를 발견하고,<br>믿을 수 있는 제품으로 실현합니다</h2>
+        </div>
+      </div>
+      <ol class="steps reveal">
+        <li class="step"><p class="step__n">01</p><h3 class="h5">소비자와 시장의 니즈 분석</h3><p>국내외 건강기능성 소재 탐색 및 소비자 요구 조사, 새로운 제품 기회 발굴</p></li>
+        <li class="step"><p class="step__n">02</p><h3 class="h5">과학적 근거 기반 제품 기획</h3><p>원료의 안전성 · 기능성 · 품질 검토, 제품 콘셉트와 차별화 포인트 개발</p></li>
+        <li class="step"><p class="step__n">03</p><h3 class="h5">제품 개발 및 품질 검증</h3><p>맛 · 형태 · 품질 · 안정성 최적화, 생산 · 품질관리 부서와 협업</p></li>
+        <li class="step"><p class="step__n">04</p><h3 class="h5">성공적인 시장 출시</h3><p>소비자가 쉽게 이해할 수 있는 제품 정보 제공, 출시 전 품질 검증</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--inverse" style="background:var(--blue-900)" aria-labelledby="cta-title">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:48px">
+      <div><span class="eyebrow">Evidence at a Glance</span><h2 id="cta-title" class="h2" style="margin-top:16px">인체적용시험과 논문 19편,<br>모든 근거를 공개합니다</h2></div>
+      <a class="btn btn--light" href="evidence.html">연구 근거 · 논문 보기 <i data-ico="arrow"></i></a>
+    </div>
+  </section>
+
+  <div class="container"><p class="disclaimer"><b>안내</b> · 균주 정보와 연구 요약은 기존 CJ웰케어 홈페이지 R&amp;D 자료를 인용했습니다. 건강기능식품은 질병의 예방 및 치료를 위한 의약품이 아닙니다.</p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

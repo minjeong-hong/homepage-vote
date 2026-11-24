@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>K-Lifestyle | CJ웰케어</title>
+<meta name="description" content="아침부터 밤까지, 한국인의 일상에서 길어 올린 웰니스 루틴과 저널">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .lh { position: relative; height: 640px; overflow: hidden; margin: 40px var(--page-margin) 0; border-radius: var(--radius-xl); max-width: calc(var(--container)); margin-left: auto; margin-right: auto; }
+  .lh > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .lh::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,250,242,.96) 0%, rgba(255,250,242,.88) 46%, rgba(255,250,242,0) 72%); }
+  .lh__copy { position: absolute; z-index: 2; left: 72px; top: 50%; transform: translateY(-50%); max-width: 520px; }
+  .lh__copy .display { margin: 20px 0 24px; }
+  .day { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
+  .day__card { border-radius: var(--radius-xl); overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .day__media { position: relative; aspect-ratio: 4 / 4.2; overflow: hidden; }
+  .day__media img { width: 100%; height: 100%; object-fit: cover; }
+  .day__time { position: absolute; left: 20px; top: 20px; padding: 8px 14px; border-radius: var(--radius-pill); background: rgba(255,255,255,.92); font-size: var(--fs-body-3); font-weight: 500; }
+  .day__body { padding: var(--sp-4); flex: 1; display: flex; flex-direction: column; }
+  .day__body h3 { font-family: var(--font-display); font-size: 26px; line-height: 1.3; }
+  .day__body ol { margin: 16px 0 20px; display: grid; gap: 10px; counter-reset: tip; }
+  .day__body li { counter-increment: tip; display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 15px; color: var(--text-secondary); }
+  .day__body li::before { content: counter(tip); width: 24px; height: 24px; border-radius: 50%; background: var(--yellow-100); color: var(--yellow-900); font-size: 12px; font-weight: 500; display: grid; place-items: center; }
+  .day__brands { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; }
+  .day--night { background: var(--blue-900); color: #fff; }
+  .day--night .day__body li { color: var(--blue-100); }
+  .day--night .day__body li::before { background: rgba(255,255,255,.12); color: #fff; }
+  .day--night .day__brands { border-color: rgba(255,255,255,.14); }
+  .heritage { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--gutter); }
+  .her { border-radius: var(--radius-xl); overflow: hidden; position: relative; min-height: 520px; color: #fff; isolation: isolate; display: flex; align-items: flex-end; }
+  .her img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .her::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(20,12,0,.78) 100%); }
+  .her__body { padding: var(--sp-4); }
+  .her__k { font-size: var(--fs-caption); letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+  .her h3 { margin: 10px 0; font-family: var(--font-display); font-size: 28px; line-height: 1.3; }
+  .her p { font-size: 15px; opacity: .9; }
+  .sample-note { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-caption); color: var(--text-tertiary); }
+</style>
+</head>
+<body data-page="lifestyle">
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="container"><ol class="breadcrumb" style="margin-top:24px"><li><a href="index.html">홈</a></li><li>K-Lifestyle</li></ol></div>
+  <section class="lh" aria-labelledby="lh-title">
+    <img src="assets/img/gen/lifestyle-hero.jpg" alt="아침 햇살이 드는 한옥 마당과 옹기, 찻잔">
+    
+    <div class="lh__copy">
+      <span class="eyebrow">K-Lifestyle Wellness</span>
+      <h1 id="lh-title" class="display">발효의 지혜를<br>오늘의 루틴으로</h1>
+      <p class="lead">기다림으로 맛을 내는 발효, 정성으로 빚는 보양. 한국인의 일상에 오래 깃든 웰니스의 지혜를 과학으로 다시 읽고, 바쁜 오늘의 루틴으로 제안합니다.</p>
+    </div>
+  </section>
+
+  <nav class="subnav" aria-label="K-Lifestyle 하위 메뉴" style="margin-top:40px">
+    <div class="container subnav__inner">
+      <a href="#routine" class="is-active">24시간 웰니스 루틴</a>
+      <a href="#journal">웰니스 저널</a>
+      <a href="#heritage">K-웰니스 헤리티지</a>
+      <a href="#newsletter">뉴스레터</a>
+    </div>
+  </nav>
+
+  <section id="routine" class="section section--warm" aria-labelledby="rt-title">
+    <div class="container">
+      <div class="section-head reveal"><div class="section-head__title"><span class="eyebrow">24-Hour Wellness</span><h2 id="rt-title" class="h1" style="margin-top:16px">하루의 흐름에 맞춘<br>세 번의 웰니스</h2><p class="lead">우리가 생각하는 웰니스는 특별한 순간에만 찾는 것이 아니라, 아침에 눈을 뜨는 순간부터 깊은 잠에 드는 밤까지 일상 속에 스며드는 것입니다.</p></div></div>
+      <div class="day reveal">
+        <article class="day__card">
+          <div class="day__media"><img src="assets/img/gen/routine-morning.jpg" alt="아침 주방에서 스틱 포를 여는 여성" loading="lazy"><span class="day__time">07:00 Morning</span></div>
+          <div class="day__body"><h3>속 편한 아침</h3><ol><li>일어나자마자 물 한 잔으로 몸 깨우기</li><li>공복 유산균으로 장 건강 루틴 시작</li><li>식이섬유가 든 아침으로 미생물까지 챙기기</li></ol><div class="day__brands"><a class="chip" href="brand-biocore.html">바이오코어</a><a class="chip" href="solutions.html#gut">맥플랜</a></div></div>
+        </article>
+        <article class="day__card">
+          <div class="day__media"><img src="assets/img/gen/routine-day.jpg" alt="옥상 정원에서 스트레칭하는 남성" loading="lazy"><span class="day__time">12:00 Day</span></div>
+          <div class="day__body"><h3>활기찬 낮</h3><ol><li>모니터에서 눈을 떼고 20초 먼 곳 보기</li><li>점심 후 10분 걷기로 리듬 되찾기</li><li>피부 · 눈 · 활력, 나의 고민에 맞춘 한 가지</li></ol><div class="day__brands"><a class="chip" href="solutions.html#beauty">이너비</a><a class="chip" href="solutions.html#nutrition">아이시안</a><a class="chip" href="solutions.html#kwellness">한뿌리</a></div></div>
+        </article>
+        <article class="day__card day--night">
+          <div class="day__media"><img src="assets/img/gen/routine-night.jpg" alt="침대에서 책을 읽는 여성" loading="lazy"><span class="day__time" style="color:var(--gray-950)">22:00 Night</span></div>
+          <div class="day__body"><h3>편안한 밤</h3><ol><li>잠들기 1시간 전, 화면 밝기 낮추기</li><li>따뜻한 차 한 잔과 가벼운 독서</li><li>나만의 나이트 루틴으로 하루 마무리</li></ol><div class="day__brands"><a class="chip" href="solutions.html#mental" style="background:rgba(255,255,255,.12);color:#fff">멜라메이트</a><a class="chip" href="solutions.html#mental" style="background:rgba(255,255,255,.12);color:#fff">메모리메이트</a></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="journal" class="section" aria-labelledby="jn-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title"><span class="eyebrow">Wellness Journal</span><h2 id="jn-title" class="h1" style="margin-top:16px">과학으로 읽는<br>일상의 웰니스</h2><p class="lead">연구원이 검수한 건강 정보를 쉽고 정확한 언어로 전합니다.</p></div>
+        <span class="sample-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>목업용 콘텐츠 예시</span>
+      </div>
+      <div class="grid grid-3 reveal" style="row-gap:56px">
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/journal-ferment.jpg" alt="김치와 된장 등 발효 반찬이 놓인 식탁" loading="lazy"></div><span class="chip chip--warm">Gut Health</span><h3>김치 한 접시에 담긴 미생물 이야기</h3><p>3,500여 개의 유산균은 어디에서 왔을까? 발효식품과 장내 미생물의 관계를 알아봅니다.</p><p class="reviewer"><i>R&amp;D</i>마이크로바이옴 R&amp;D 센터 검수</p></a>
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/journal-fiber.jpg" alt="키위, 사과, 귀리, 견과류 플랫레이" loading="lazy"></div><span class="chip">Science</span><h3>MAC이 뭐길래? 미생물이 먹는 식이섬유</h3><p>2014년 스탠퍼드대 연구진이 제시한 개념, MAC을 일상 식단에서 챙기는 방법.</p><p class="reviewer"><i>R&amp;D</i>마이크로바이옴 R&amp;D 센터 검수</p></a>
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/journal-sleep.jpg" alt="침대 옆 허브차와 노트" loading="lazy"></div><span class="chip chip--gray">Night Routine</span><h3>잠들기 전 1시간, 나이트 루틴 만드는 법</h3><p>빛, 온도, 습관. 편안한 밤을 위한 작은 변화부터 시작해 보세요.</p><p class="reviewer"><i>R&amp;D</i>제품개발팀 검수</p></a>
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/journal-walk.jpg" alt="가을 산길을 걷는 두 여성" loading="lazy"></div><span class="chip chip--gray">Active Aging</span><h3>5070을 위한 걷기 습관, 오만 보의 시작</h3><p>무리하지 않고 꾸준히. 계절별로 즐기는 서울 근교 산책 코스.</p><p class="reviewer"><i>R&amp;D</i>제품개발팀 검수</p></a>
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/story-product.jpg" alt="캡슐과 스틱 포, 김치 정물" loading="lazy"></div><span class="chip chip--warm">Gut Health</span><h3>유산균, 언제 먹는 게 좋을까?</h3><p>보장균수, 장용성 캡슐, 상온 보관까지. 유산균 고를 때 알아두면 좋은 것들.</p><p class="reviewer"><i>R&amp;D</i>마이크로바이옴 R&amp;D 센터 검수</p></a>
+        <a class="journal-card" href="#"><div class="journal-card__media"><img src="assets/img/gen/cta-band.jpg" alt="요거트와 과일, 발효 반찬이 놓인 아침 식탁" loading="lazy"></div><span class="chip">K-Food</span><h3>한식 아침상으로 차리는 균형 잡힌 하루</h3><p>제철 채소와 발효 반찬으로 완성하는 K-웰니스 아침 식단.</p><p class="reviewer"><i>R&amp;D</i>제품개발팀 검수</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="heritage" class="section section--subtle" aria-labelledby="hr-title">
+    <div class="container">
+      <div class="section-head reveal"><div class="section-head__title"><span class="eyebrow">K-Wellness Heritage</span><h2 id="hr-title" class="h1" style="margin-top:16px">시간과 정성으로 빚은<br>한국의 웰니스</h2><p class="lead">발효와 보양, 오래된 지혜를 현대인의 일상에 맞게 다시 설계합니다.</p></div></div>
+      <div class="heritage reveal">
+        <a class="her" href="science.html#overview"><img src="assets/img/rnd/strain-kimchi.jpg" alt="" loading="lazy"><div class="her__body"><p class="her__k">Fermentation</p><h3>김치에서 시작된 과학</h3><p>CJ의 60년 발효기술. 김치 속 미생물의 다양성에서 대표 균주를 발견했습니다.</p></div></a>
+        <a class="her" href="solutions.html#kwellness"><img src="assets/img/brand/hanppuri.jpg" alt="" loading="lazy"><div class="her__body"><p class="her__k">한뿌리 · Black Ginseng</p><h3>아홉 번 찌고 말린 흑삼</h3><p>구증구포 흑삼과 저분자 사포닌 기술. 정통 보양의 변치 않는 기준.</p></div></a>
+        <a class="her" href="solutions.html#kwellness"><img src="assets/img/brand/jeil.jpg" alt="" loading="lazy"><div class="her__body"><p class="her__k">제일건강원 · Modern Boyang</p><h3>현대인을 위한 건강원</h3><p>홍삼 · 쌍화 · 맥문동 · 배도라지. 매일의 일상을 깨우는 새로운 기준.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="section" aria-labelledby="nl-title">
+    <div class="container">
+      <div class="cta-band reveal">
+        <img src="assets/img/gen/cta-band.jpg" alt="" loading="lazy">
+        <div class="cta-band__body"><span class="eyebrow">Wellness Letter</span><h2 id="nl-title" class="h2">한 달에 한 번,<br>나에게 맞는 루틴 레터</h2><p class="body-l">계절별 루틴과 최신 연구 소식을 받아보세요.</p><form class="subscribe" onsubmit="return false"><label class="sr-only" for="nl-email">이메일</label><input id="nl-email" type="email" placeholder="이메일 주소를 입력하세요"><button class="btn btn--primary" type="submit">구독하기</button></form></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

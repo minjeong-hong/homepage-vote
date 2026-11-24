@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CJ웰케어 | 아침부터 밤까지, 더 나은 하루를 만드는 웰니스 솔루션</title>
+  <meta name="description" content="활력있는 아침부터 편안한 밤까지, 당신의 일상에 필요한 웰니스를 제안합니다." />
+  <link rel="icon" type="image/png" href="assets/img/ci/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/img/ci/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="assets/img/hero-poster-pc.jpg" media="(min-width: 768px)" />
+  <link rel="preload" as="image" href="assets/img/hero-poster-mo.jpg" media="(max-width: 767px)" />
+  <link rel="stylesheet" href="assets/vendor/lenis.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip" href="#journey">본문 바로가기</a>
+
+  <!-- 헤더: 히어로 위 투명 → 스크롤 후 흰 배경 (main.js) -->
+  <header class="gnb" data-state="top">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="http://13.125.237.98" aria-label="CJ웰케어 홈">
+        <img class="gnb__logo-w" src="assets/img/ci/wellcare-color-white.png" alt="CJ WELLCARE" width="1504" height="600" />
+        <img class="gnb__logo-k" src="assets/img/ci/wellcare-color-black.png" alt="" width="1504" height="600" />
+      </a>
+      <!-- 주 메뉴(sci2): 과학을 맨 앞에 — SCIENCE · BRANDS · ABOUT US · NEWSROOM · CONTACT. PC는 마우스 오버(키보드 포커스) 시 메가 메뉴, 모바일은 기존 햄버거 목록 -->
+      <nav class="gnb__nav" id="gnb-nav" aria-label="주 메뉴">
+        <ul class="gnb__list" role="list">
+        <li class="gnb__item">
+          <a class="gnb__top" href="http://13.125.237.98/innovation" aria-expanded="false" aria-controls="mega-sci">SCIENCE</a>
+          <div class="mega" id="mega-sci">
+            <div class="mega__inner">
+              <div class="mega__intro">
+                <p class="mega__title">SCIENCE</p>
+                <p class="mega__caption">Scientific Evidence와 Microbiome<br />전문성을 기반으로 건강의 기준을 만듭니다.</p>
+                <a class="mega__all" href="http://13.125.237.98/innovation">R&amp;D 전체 보기</a>
+              </div>
+              <ul class="mega__links" role="list">
+                <li><a href="http://13.125.237.98/innovation">혁신 제품 개발</a></li>
+                <li><a href="http://13.125.237.98/microbiome">마이크로바이옴 연구</a></li>
+                <li><a href="http://13.125.237.98/strain">핵심 균주 자산</a></li>
+                <li><a href="http://13.125.237.98/research">연구 성과</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="gnb__item">
+          <a class="gnb__top" href="http://13.125.237.98/brand" aria-expanded="false" aria-controls="mega-brands">BRANDS</a>
+          <div class="mega" id="mega-brands">
+            <div class="mega__inner">
+              <div class="mega__intro">
+                <p class="mega__title">BRANDS</p>
+                <p class="mega__caption">모두의 아름답고 건강한 삶을 위한<br />새로운 웰니스 솔루션</p>
+                <a class="mega__all" href="http://13.125.237.98/brand">브랜드 전체 보기</a>
+              </div>
+              <!-- 메인 하루 여정과 같은 축(아침 → 밤 → 매일)으로 묶음. 섭취 시간 안내가 아닌 라이프스타일 제안 -->
+              <div class="mega__groups mega__groups--day">
+                <div class="mega__group">
+                  <p class="mega__cat">Morning</p>
+                  <ul role="list">
+                    <li><a href="http://13.125.237.98/brand/biocore">바이오코어</a></li>
+                  </ul>
+                </div>
+                <div class="mega__group">
+                  <p class="mega__cat">Afternoon</p>
+                  <ul role="list">
+                    <li><a href="http://13.125.237.98/brand/macplan">맥플랜</a></li>
+                  </ul>
+                </div>
+                <div class="mega__group">
+                  <p class="mega__cat">Evening</p>
+                  <ul role="list">
+                    <li><a href="http://13.125.237.98/brand/innerb">이너비</a></li>
+                  </ul>
+                </div>
+                <div class="mega__group">
+                  <p class="mega__cat">Night</p>
+                  <ul role="list">
+                    <li><a href="http://13.125.237.98/brand/melamate">멜라메이트</a></li>
+                  </ul>
+                </div>
+                <div class="mega__group mega__group--wide">
+                  <p class="mega__cat">Every day</p>
+                  <ul role="list">
+                    <li><a href="http://13.125.237.98/brand/memorymate">메모리메이트&amp;브레인메이트</a></li>
+                    <li><a href="http://13.125.237.98/brand/hanppuri">한뿌리</a></li>
+                    <li><a href="http://13.125.237.98/brand/jeil">제일건강원</a></li>
+                    <li><a href="http://13.125.237.98/brand/omanbo">관절오만보</a></li>
+                    <li><a href="http://13.125.237.98/brand/eyecian">아이시안</a></li>
+                    <li><a href="http://13.125.237.98/brand/jeonripso">전립소</a></li>
+                    <li><a href="http://13.125.237.98/brand/basic">기초영양</a></li>
+                    <li><a href="http://13.125.237.98/brand/yamgroo">얌그루</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="gnb__item">
+          <a class="gnb__top" href="http://13.125.237.98/company" aria-expanded="false" aria-controls="mega-about">ABOUT US</a>
+          <div class="mega" id="mega-about">
+            <div class="mega__inner">
+              <div class="mega__intro">
+                <p class="mega__title">ABOUT US</p>
+                <p class="mega__caption">CJ웰케어는 헬스케어 솔루션<br />전문 기업입니다.</p>
+              </div>
+              <ul class="mega__links" role="list">
+                <li><a href="http://13.125.237.98/company">Company</a></li>
+                <li><a href="http://13.125.237.98/ceo">CEO Message</a></li>
+                <li><a href="http://13.125.237.98/history">History</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="gnb__item">
+          <a class="gnb__top" href="http://13.125.237.98/media" aria-expanded="false" aria-controls="mega-news">NEWSROOM</a>
+          <div class="mega" id="mega-news">
+            <div class="mega__inner">
+              <div class="mega__intro">
+                <p class="mega__title">NEWSROOM</p>
+                <a class="mega__latest" href="http://13.125.237.98/media/1"><span>최근 소식 · 2026.10.14</span>CJ웰케어, 5070 세대 맞춤 식후 케어 ‘RB101 유산균&amp;효소’ 출시</a>
+              </div>
+              <ul class="mega__links" role="list">
+                <li><a href="http://13.125.237.98/media">미디어</a></li>
+                <li><a href="http://13.125.237.98/settlement">결산공고</a></li>
+                <li><a href="http://13.125.237.98/board">게시판</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="gnb__item"><a class="gnb__top" href="http://13.125.237.98/contact">CONTACT</a></li>
+        </ul>
+      </nav>
+      <div class="gnb__dim" aria-hidden="true"></div>
+      <div class="gnb__util">
+        <span class="gnb__lang"><b>KR</b><span aria-hidden="true">/</span><a href="#" lang="en">EN</a></span>
+        <button class="gnb__menu" type="button" aria-expanded="false" aria-controls="gnb-nav">
+          <span class="visually-hidden">메뉴 열기</span><i aria-hidden="true"></i><i aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 1. HERO — 실험실의 빛이 아침이 된다 ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="visually-hidden">과학에서 시작해, 아침부터 밤까지, 더 나은 하루를 만드는 웰니스 솔루션</h1>
+      <div class="hero__stage">
+        <div class="hero__media">
+          <!-- PC 1920×1080 / 모바일 720×1280 세로 크롭, 18초 루프 (원본 56초·70MB → 2.7MB / 1MB) -->
+          <video class="hero__video" muted loop playsinline preload="metadata"
+                 poster="assets/img/hero-poster-pc.jpg"
+                 data-poster-mo="assets/img/hero-poster-mo.jpg"
+                 aria-label="CJ웰케어 연구소에서 연구원들이 실험하는 모습">
+            <source src="assets/video/hero-lab-mo.mp4" type="video/mp4" media="(max-width: 767px)" />
+            <source src="assets/video/hero-lab-pc.mp4" type="video/mp4" />
+          </video>
+          <div class="hero__shade" aria-hidden="true"></div>
+          <div class="hero__light" aria-hidden="true"></div>
+          <div class="hero__glow" aria-hidden="true"></div>
+
+          <div class="hero__copy1 wrap" aria-hidden="true">
+            <p class="eyebrow">CJ WELLCARE · NEW WELLNESS SOLUTION</p>
+            <p class="hero__line1" data-split>과학에서 시작해,</p>
+          </div>
+          <p class="hero__cue" aria-hidden="true"><span>Scroll</span><i></i></p>
+        </div>
+
+        <div class="hero__dawn" aria-hidden="true">
+          <div class="dayloop" aria-hidden="true">
+            <svg class="dayloop__arc" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="pc" d="M62 100 A22 80 0 0 1 106 100" /><path class="mo" d="M-2 34 A52 22 0 0 1 102 34" /></svg>
+            <i class="dayloop__sun"></i><i class="dayloop__moon"></i>
+            <p class="dayloop__time"><span>MORNING</span><span>AFTERNOON</span><span>EVENING</span><span>NIGHT</span></p>
+          </div>
+          <div class="wrap">
+            <p class="hero__vision">The K-Lifestyle Wellness Solution Provider</p>
+            <p class="hero__line2">
+              <span class="hero__l2a"><span class="w-am">아침</span><span class="w-am2">부터</span> <span class="w-pm">밤</span><span class="w-pm2">까지,</span></span>
+              <span class="hero__l2b">더 나은 하루를 만드는 웰니스 솔루션</span>
+            </p>
+            <p class="hero__sub">활력있는 아침부터 편안한 밤까지, 당신의 일상에 필요한 웰니스를 제안합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. R&D 근거 — 히어로의 밤에서 이어지는 연구소 ============ -->
+    <section class="rnd rnd--b" id="rnd" aria-labelledby="rnd-title">
+      <video class="rnd__video" muted loop playsinline preload="none" poster="assets/img/rnd-poster.jpg" aria-label="CJ웰케어 연구소에서 현미경으로 시료를 관찰하는 모습">
+        <source src="assets/video/rnd-lab.mp4" type="video/mp4" />
+      </video>
+      <div class="rnd__shade" aria-hidden="true"></div>
+      <div class="wrap">
+        <!-- sci3: 선언(연구 성과 페이지 태그라인) → 결정적 근거 1개 → 검증 설계 → 회사 전체의 제품 개발 과정 -->
+        <div class="rnd__head">
+          <p class="eyebrow">R&amp;D · SCIENTIFIC EVIDENCE &amp; MICROBIOME</p>
+          <h2 id="rnd-title" lang="en"><span class="ln"><span>Strain-specific.</span></span><span class="ln"><span>Evidence-based.</span></span></h2>
+          <a class="rnd__link" href="http://13.125.237.98/research">연구 성과 보기</a>
+          <p class="rnd__lead">균주의 가능성을 과학적 근거로 검증합니다</p>
+        </div>
+
+        <!-- 결정적 근거: 국내 개발 유산균주 최초 개별인정형 + 인체적용시험 설계 -->
+        <div class="proof">
+          <div class="proof__main">
+            <p class="proof__tag">CJLP133 · 2013</p>
+            <p class="proof__title">국내 개발 유산균주 <em class="mark">최초</em><br />개별인정형 기능성 원료</p>
+            <p class="proof__text">김치에서 유래한 CJLP133은 지속적인 연구와 인체적용시험을 통해, 식품의약품안전처로부터 ‘면역과민반응에 의한 피부 상태 개선에 도움을 줄 수 있음’의 기능성을 인정받았습니다.</p>
+          </div>
+          <div class="proof__design">
+            <p class="proof__label">HUMAN STUDY DESIGN</p>
+            <ul role="list">
+              <li><b lang="en">Randomized</b><span>무작위 배정</span></li>
+              <li><b lang="en">Double-blind</b><span>이중맹검</span></li>
+              <li><b lang="en">Placebo-controlled</b><span>위약대조</span></li>
+            </ul>
+            <p class="proof__note">세포·비임상 연구로 기능성을 평가하고, 인체 적용 연구로 효과를 확인합니다.</p>
+          </div>
+        </div>
+
+        <!-- 숫자는 보조로 (3개) -->
+        <dl class="stats stats--3">
+          <div class="stat">
+            <dt>김치에서 분리한 유산균</dt>
+            <dd><span class="stat__pre">약</span><span class="stat__num" data-count="3500">3,500</span><span class="stat__unit">개</span></dd>
+          </div>
+          <div class="stat">
+            <dt>연구 논문 · 전임상부터 인체적용시험까지</dt>
+            <dd><span class="stat__num" data-count="19">19</span><span class="stat__unit">편</span></dd>
+          </div>
+          <div class="stat">
+            <dt>CJ그룹 R&amp;D 노하우</dt>
+            <dd><span class="stat__num" data-count="20">20</span><span class="stat__unit">여 년</span></dd>
+          </div>
+        </dl>
+        <ul class="honors" role="list" aria-label="과학기술 분야 수상">
+          <li><b>장영실상</b><span>BYO 유산균 · 2015</span></li>
+          <li><b>과학기술포장 대통령상</b><span>BYO 유산균 · 2015</span></li>
+        </ul>
+
+        <!-- 제품 개발 과정: 혁신 제품 개발 페이지 공식 4단계 (유산균·MAC 등 모든 제품 공통) -->
+        <ol class="flow flow--4" role="list" aria-label="제품 개발 과정">
+          <li class="flow__step">
+            <p class="flow__no">01 <span>INSIGHT</span></p>
+            <p class="flow__title">소비자와 시장의<br />니즈 분석</p>
+            <p class="flow__text">국내외 건강기능성 소재 탐색 및 소비자 요구 조사</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__no">02 <span>PLAN</span></p>
+            <p class="flow__title">과학적 근거 기반<br />제품 기획</p>
+            <p class="flow__text">원료의 안전성, 기능성, 품질 검토</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__no">03 <span>VERIFY</span></p>
+            <p class="flow__title">제품 개발 및<br />품질 검증</p>
+            <p class="flow__text">맛, 형태, 품질, 안정성 최적화</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__no">04 <span>LAUNCH</span></p>
+            <p class="flow__title">성공적인<br />시장 출시</p>
+            <p class="flow__text">출시 전 품질 검증 및 생산 준비 완료</p>
+          </li>
+        </ol>
+        <p class="rnd__src">수치·근거: CJ웰케어 사이트 R&amp;D(핵심 균주 자산·연구 성과·혁신 제품 개발)·회사 소개·연혁 페이지 기준 · CJ바이오사이언스 연계: CEO 메시지·맥플랜 브랜드 페이지 기준</p>
+
+        <!-- 기술 → 제품 → 고객: CJ웰케어 × CJ바이오사이언스 기술력이 주력 제품 맥플랜으로, 다시 고객의 하루(아래 하루 여정)로 -->
+        <div class="bridge">
+          <p class="bridge__tag">FROM SCIENCE TO EVERY DAY</p>
+          <p class="bridge__line">건강 니즈를 발견하고,<br />믿을 수 있는 제품으로 실현합니다</p>
+          <!-- CJ웰케어 × CJ바이오사이언스 → 맥플랜(주력) → 고객 -->
+          <div class="collab">
+            <div class="collab__pair">
+              <div class="collab__side">
+                <p class="collab__logo"><img src="assets/img/ci/wellcare-color-white.png" alt="CJ웰케어" width="1504" height="600" /></p>
+                <p class="collab__key">독자 균주 · R&amp;D 노하우</p>
+                <p class="collab__what">김치 유래 CJ 독자 유산균과<br />과학적 배합 설계</p>
+              </div>
+              <span class="collab__x" aria-hidden="true">×</span>
+              <div class="collab__side">
+                <p class="collab__logo"><img src="assets/img/ci/bioscience-color-white.png" alt="CJ바이오사이언스" width="1620" height="600" /></p>
+                <p class="collab__key">마이크로바이옴 기술력</p>
+                <p class="collab__what">마이크로바이옴 플랫폼과<br />연계한 연구</p>
+              </div>
+            </div>
+            <a class="collab__product" href="http://13.125.237.98/brand/macplan">
+              <span class="collab__img"><img src="assets/img/products/macplan.png" alt="맥플랜 데일리 뉴트리션 드링크" loading="lazy" /></span>
+              <span class="collab__body">
+                <span class="collab__tag">CJ WELLCARE × CJ BIOSCIENCE</span>
+                <b class="collab__brand"><img src="assets/img/macplan/macplan-hero-logo.svg" alt="맥플랜 MACPLAN" width="1291" height="237" /></b>
+                <span class="collab__copy">데일리 뉴트리션 드링크 · 한 병으로 채우는 한 끼</span>
+                <span class="collab__num"><b>MAC</b><span>장내 미생물의 먹이가 되는<br />식이섬유</span></span>
+                <span class="collab__more">맥플랜 더 알아보기</span>
+              </span>
+            </a>
+            <p class="collab__to"><span>고객</span>더 건강한 라이프스타일</p>
+          </div>
+          <p class="bridge__next" aria-hidden="true"><span>MORNING</span><i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. 하루 여정 (GROVE식: 화면 고정 + 시간대별 주력 1개) ============ -->
+    <section class="journey" id="journey" aria-labelledby="journey-title">
+      <h2 id="journey-title" class="visually-hidden">하루 여정: 시간대별 대표 브랜드</h2>
+      <div class="day">
+        <div class="day__stage">
+          <div class="day__sky" aria-hidden="true">
+            <svg viewBox="0 0 1000 1000" preserveAspectRatio="none"><path d="M -20 1000 A 520 820 0 0 1 1020 1000" /></svg>
+            <i class="day__sun"></i>
+            <i class="day__moon"></i>
+          </div>
+          <nav class="day__stack" aria-label="시간대 바로가기">
+            <ol role="list">
+              <li><a href="#morning" data-goto="0" aria-label="아침 · 바이오코어"><img src="assets/img/products/biocore-500.jpg" alt="" /></a></li>
+              <li><a href="#afternoon" data-goto="1" aria-label="점심 · 맥플랜"><img src="assets/img/products/macplan.png" alt="" /></a></li>
+              <li><a href="#evening" data-goto="2" aria-label="저녁 · 이너비"><img src="assets/img/products/innerb.jpg" alt="" /></a></li>
+              <li><a href="#night" data-goto="3" aria-label="밤 · 멜라메이트"><img src="assets/img/products/melamate.png" alt="" /></a></li>
+            </ol>
+          </nav>
+          <div class="day__scenes wrap">
+          <article class="scene" id="morning" data-time="morning" data-index="0" aria-labelledby="sc-morning">
+            <div class="scene__info">
+              <p class="scene__time">MORNING <span>아침</span></p>
+              <p class="scene__cat">Gut Health</p>
+              <h3 class="scene__brand" id="sc-morning">바이오코어 <small>건강한 생유산균 500억</small></h3>
+              <p class="scene__num"><b>500억</b><span>CFU<br />보장균수<sup>*</sup></span></p>
+              <p class="scene__benefit">김치에서 찾은 CJ 유산균 CJLP133</p>
+              <ul class="scene__chips" role="list" aria-label="과학 근거"><li>CJLP133</li><li>식약처 개별인정형</li><li>장용성 캡슐</li></ul>
+              <div class="scene__actions">
+                <button class="scene__toggle" type="button" aria-expanded="false" aria-controls="sci-morning">과학 보기</button>
+                <a class="scene__more" href="http://13.125.237.98/brand/biocore">더 알아보기</a>
+              </div>
+            </div>
+            <div class="scene__visual">
+              <div class="card has-sci scene__panel">
+                <div class="scene__product"><img src="assets/img/shots/biocore.jpg" alt="햇살 드는 아침 식탁 위 바이오코어 건강한 생유산균 500억" loading="lazy" /></div>
+                <div class="card__sci" id="sci-morning">
+                  <img class="card__macro" src="assets/img/macro-microscope.jpg" alt="" loading="lazy" />
+                  <div class="card__sci-body">
+                    <p class="sci__tag">SCIENCE · 핵심 균주</p>
+                    <p class="sci__name">CJLP133</p>
+                    <p class="sci__why">김치에서 찾고, 인체적용시험으로 검증한 CJ 독자 유산균이에요.</p>
+                    <p class="sci__proof"><b>식약처</b> 개별인정형</p>
+                    <p class="sci__src">인정 기능성: 면역과민반응에 의한 피부 상태 개선에 도움을 줄 수 있음(CJ웰케어 핵심 균주 자산 페이지 기준) · 제품 표시 기준 제2013-11호</p>
+                    <a class="sci__more" href="http://13.125.237.98/brand/biocore">바이오코어 더 알아보기</a>
+                  </div>
+                  <button class="card__close" type="button" aria-label="과학 레이어 닫기"></button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="scene" id="afternoon" data-time="afternoon" data-index="1" aria-labelledby="sc-afternoon">
+            <div class="scene__info">
+              <p class="scene__time">AFTERNOON <span>점심</span></p>
+              <p class="scene__cat">Gut Health</p>
+              <h3 class="scene__brand" id="sc-afternoon">맥플랜 <small>데일리 뉴트리션 드링크 · 한 병으로 채우는 한 끼</small></h3>
+              <p class="scene__num"><b>MAC</b><span>장내 미생물의 먹이가 되는<br />식이섬유</span></p>
+              <ul class="scene__chips" role="list" aria-label="브랜드 키워드"><li>미생물 밸런스</li><li>헬시 스낵</li><li>즐거운 건강관리</li></ul>
+              <div class="scene__actions">
+                <button class="scene__toggle" type="button" aria-expanded="false" aria-controls="sci-afternoon">과학 보기</button>
+                <a class="scene__more" href="http://13.125.237.98/brand/macplan">더 알아보기</a>
+              </div>
+            </div>
+            <div class="scene__visual">
+              <div class="card has-sci scene__panel">
+                <div class="scene__product"><img src="assets/img/shots/macplan.jpg" alt="가방에서 맥플랜 뉴트리션 드링크를 꺼내는 모습" loading="lazy" /></div>
+                <div class="card__sci" id="sci-afternoon">
+                  <img class="card__macro" src="assets/img/macro-fiber.jpg" alt="" loading="lazy" />
+                  <div class="card__sci-body">
+                    <p class="sci__tag">CJ WELLCARE × CJ BIOSCIENCE</p>
+                    <p class="sci__name">MAC 식이섬유</p>
+                    <p class="sci__why">장내 미생물의 먹이까지 설계했어요.</p>
+                    <p class="sci__proof"><b>CJ바이오사이언스</b> 마이크로바이옴 기술력</p>
+                    <p class="sci__src">맥플랜 브랜드 페이지 기준</p>
+                    <a class="sci__more" href="http://13.125.237.98/brand/macplan">맥플랜 더 알아보기</a>
+                  </div>
+                  <button class="card__close" type="button" aria-label="과학 레이어 닫기"></button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="scene" id="evening" data-time="evening" data-index="2" aria-labelledby="sc-evening">
+            <div class="scene__info">
+              <p class="scene__time">EVENING <span>저녁</span></p>
+              <p class="scene__cat">Beauty</p>
+              <h3 class="scene__brand" id="sc-evening">이너비 <small>Always Be Me, InnerB</small></h3>
+              <p class="scene__num"><b>CJ NMF</b><span>이너비 연구개발 포뮬러<sup>*</sup></span></p>
+              <p class="scene__benefit">내면의 건강함으로, 외면의 아름다움과 자신감을</p>
+              <ul class="scene__chips" role="list" aria-label="브랜드 키워드"><li>이너뷰티</li><li>피부</li><li>다이어트</li></ul>
+              <div class="scene__actions">
+                <button class="scene__toggle" type="button" aria-expanded="false" aria-controls="sci-evening">과학 보기</button>
+                <a class="scene__more" href="http://13.125.237.98/brand/innerb">더 알아보기</a>
+              </div>
+            </div>
+            <div class="scene__visual">
+              <div class="card has-sci scene__panel">
+                <div class="scene__product"><img src="assets/img/shots/innerb.jpg" alt="실험 유리기구와 함께 놓인 이너비 제품 라인" loading="lazy" /></div>
+                <div class="card__sci" id="sci-evening">
+                  <img class="card__macro" src="assets/img/macro-flask.jpg" alt="" loading="lazy" />
+                  <div class="card__sci-body">
+                    <p class="sci__tag">SCIENCE · 팻다운 나이트번 잔티젠</p>
+                    <p class="sci__name">잔티젠</p>
+                    <p class="sci__why">체지방 감소에 도움을 줄 수 있음</p>
+                    <p class="sci__proof"><b>식약처</b> 개별인정형</p>
+                    <p class="sci__src">개별인정형 기능성 원료 · 팻다운 나이트번 제품 기준</p>
+                    <a class="sci__more" href="http://13.125.237.98/brand/innerb">이너비 더 알아보기</a>
+                  </div>
+                  <button class="card__close" type="button" aria-label="과학 레이어 닫기"></button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="scene" id="night" data-time="night" data-index="3" aria-labelledby="sc-night">
+            <div class="scene__info">
+              <p class="scene__time">NIGHT <span>밤</span></p>
+              <p class="scene__cat">Mental</p>
+              <h3 class="scene__brand" id="sc-night">멜라메이트</h3>
+              <p class="scene__num scene__num--rank"><b>1위</b><span><img class="scene__oy" src="assets/img/logo-oliveyoung.png" alt="" width="20" height="20" />올리브영<br />멜라토닌 브랜드<sup>*</sup></span></p>
+              <p class="scene__benefit">나의 첫 나이트 메이트</p>
+              <ul class="scene__chips" role="list" aria-label="브랜드 키워드"><li>식물성 멜라토닌</li><li>나이트 루틴</li><li>국내 최초 구미</li></ul>
+              <div class="scene__actions">
+                <button class="scene__toggle" type="button" aria-expanded="false" aria-controls="sci-night">과학 보기</button>
+                <a class="scene__more" href="http://13.125.237.98/brand/melamate">더 알아보기</a>
+              </div>
+            </div>
+            <div class="scene__visual">
+              <div class="card has-sci scene__panel">
+                <div class="scene__product"><img src="assets/img/shots/melamate.jpg" alt="협탁 조명 아래 놓인 멜라메이트" loading="lazy" /></div>
+                <div class="card__sci" id="sci-night">
+                  <img class="card__macro" src="assets/img/macro-tube.jpg" alt="" loading="lazy" />
+                  <div class="card__sci-body">
+                    <p class="sci__tag">SCIENCE · 핵심 원료</p>
+                    <p class="sci__name">식물성 멜라토닌</p>
+                    <p class="sci__why">CJ웰케어 R&amp;D 노하우로 과학적 배합을 설계했어요.</p>
+                    <p class="sci__proof">국내 <b>최초</b> 식물성 멜라토닌 구미 제형</p>
+                    <p class="sci__src">멜라메이트 브랜드 페이지 기준</p>
+                    <a class="sci__more" href="http://13.125.237.98/brand/melamate">멜라메이트 더 알아보기</a>
+                  </div>
+                  <button class="card__close" type="button" aria-label="과학 레이어 닫기"></button>
+                </div>
+              </div>
+            </div>
+          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. EVERY DAY — 매일 곁에, 더 많은 브랜드 ============ -->
+    <section class="everyday-sec" aria-labelledby="everyday-title">
+      <div class="everyday" data-time="everyday">
+        <div class="wrap everyday__inner">
+          <div class="everyday__head">
+            <p class="chapter__time">EVERY DAY</p>
+            <h2 id="everyday-title">매일 곁에, 더 많은 브랜드</h2>
+          </div>
+          <a class="everyday__feature" href="http://13.125.237.98/brand/jeil">
+            <span class="everyday__feature-img"><img src="assets/img/shots/jeil.jpg" alt="책상 위 아이스 음료 잔 옆에 놓인 제일건강원 생기맥문동 파우치" loading="lazy" /></span>
+            <span class="everyday__feature-body">
+              <span class="everyday__feature-cat">K-Wellness</span>
+              <b>제일건강원</b>
+              <span class="everyday__feature-copy">매일의 일상을 깨우는 새로운 기준</span>
+              <span class="everyday__feature-prod">대표 제품 · 생기맥문동</span>
+              <span class="everyday__feature-more">더 알아보기</span>
+            </span>
+          </a>
+          <ul class="everyday__list" role="list">
+            <li><a href="http://13.125.237.98/brand/memorymate"><img src="assets/img/products/memorymate.jpg" alt="" loading="lazy" /><span><b>메모리메이트·브레인메이트</b>생각은 선명하게</span></a></li>
+            <li><a href="http://13.125.237.98/brand/hanppuri"><img src="assets/img/products/hanppuri.jpg" alt="" loading="lazy" /><span><b>한뿌리</b>구증구포 흑삼 · FDA NDI 승인<sup>*</sup></span></a></li>
+            <li><a href="http://13.125.237.98/brand/omanbo"><img src="assets/img/products/omanbo.jpg" alt="" loading="lazy" /><span><b>관절오만보</b>오만보를 걷는 열정</span></a></li>
+            <li><a href="http://13.125.237.98/brand/eyecian"><img src="assets/img/products/eyecian.jpg" alt="" loading="lazy" /><span><b>아이시안</b>현대인의 맞춤 눈건강 케어</span></a></li>
+            <li><a href="http://13.125.237.98/brand/jeonripso"><img src="assets/img/products/jeonripso.jpg" alt="" loading="lazy" /><span><b>전립소</b>남성의 활력 케어</span></a></li>
+            <li><a href="http://13.125.237.98/brand/basic"><img src="assets/img/products/basic.jpg" alt="" loading="lazy" /><span><b>기초영양 <small>닥터뉴트리</small></b>매일 필요한 기초영양</span></a></li>
+            <li><a href="http://13.125.237.98/brand/yamgroo"><img src="assets/img/products/yamgroo.jpg" alt="" loading="lazy" /><span><b>얌그루</b>우리 아이 건강 솔루션</span></a></li>
+            <li><a class="everyday__all" href="http://13.125.237.98/brand"><span><b>브랜드 전체 보기</b>Gut · Beauty · Mental · Basic · K-Wellness</span></a></li>
+          </ul>
+        </div>
+        <p class="wrap journey__note">* 시간대 구성은 라이프스타일 제안입니다. 제품별 섭취 방법은 제품 표시사항을 확인하세요.<br />* 바이오코어 보장균수 500억 CFU: 제품 표시사항 기준<br />* 멜라메이트 올리브영 멜라토닌 1등 브랜드·국내 최초 식물성 멜라토닌 구미 제형: 멜라메이트 브랜드 페이지 기준<br />* 이너비 CJ NMF 포뮬러·브랜드 카피: 이너비 브랜드 페이지 기준<br />* 한뿌리 구증구포 흑삼 FDA NDI(신규건강식품원료) 승인: 연혁 페이지 기준(2016.01)</p>
+      </div>
+    </section>
+
+    <!-- ============ 4.5 VISION — 하루 여정의 끝에서 비전으로 (비전: 공모전 가이드 문구 / 미션·CORE VALUES: 회사 소개 페이지 원문) ============ -->
+    <section class="vision" aria-labelledby="vision-title">
+      <div class="wrap vision__inner">
+        <p class="eyebrow">OUR VISION</p>
+        <h2 id="vision-title" class="vision__title" lang="en">The K-Lifestyle<br />Wellness Solution Provider</h2>
+        <p class="vision__mission">과학적 전문성과 고객에 대한 깊은 이해를 바탕으로<br />건강한 라이프스타일의 새로운 가치를 창출합니다.</p>
+        <ul class="vision__values" role="list" aria-label="CORE VALUES">
+          <li><b>24/7 라이프 케어</b><span>아침 유산균부터 나이트 루틴 케어까지, 일상 전체를 밀착 케어하는 맞춤형 영양 가치</span></li>
+          <li><b>고민별 맞춤형 솔루션</b><span>장 건강, 눈, 피부, 수면 등 개인의 삶과 고민에 최적화된 전문 브랜드 라인업</span></li>
+          <li><b>독자적 기술 &amp; 과학적 검증</b><span>초격차 유산균, 기능성 소재 원천 기술 및 차세대 <span class="nw">맥플랜(MAC Plan)</span> 중심의 과학적 헬스케어</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 5. NEWSROOM ============ -->
+    <section class="news" aria-labelledby="news-title">
+      <div class="wrap news__inner">
+        <div class="news__head">
+          <h2 id="news-title">NEWSROOM</h2>
+          <a href="http://13.125.237.98/media">전체 보기</a>
+        </div>
+        <ol class="news__list" role="list">
+          <li><a href="http://13.125.237.98/media/1"><time datetime="2026-10-14">2026.10.14</time><span class="news__tag">기타</span><span class="news__title">CJ웰케어, 5070 세대 맞춤 식후 케어 ‘RB101 유산균&amp;효소’ 출시</span></a></li>
+          <li><a href="http://13.125.237.98/media/2"><time datetime="2026-09-30">2026.09.30</time><span class="news__tag">MAC PLAN</span><span class="news__title">CJ웰케어, 한 병으로 채우는 한 끼 영양 ‘맥플랜 뉴트리션 드링크’ 3종 출시</span></a></li>
+          <li><a href="http://13.125.237.98/media/3"><time datetime="2026-08-31">2026.08.31</time><span class="news__tag">바이오코어</span><span class="news__title">CJ웰케어, ‘바이오코어 쓰리핏 유산균 다이어트’ 코스트코 전점 입점…오프라인 유통망 확대</span></a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <img class="footer__logo" src="assets/img/ci/wellcare-color-black.png" alt="CJ WELLCARE" width="1504" height="600" />
+      <nav class="footer__nav" aria-label="하단 메뉴">
+        <a href="http://13.125.237.98/company">ABOUT US</a>
+        <a href="http://13.125.237.98/brand">BRANDS</a>
+        <a href="http://13.125.237.98/innovation">R&amp;D</a>
+        <a href="http://13.125.237.98/media">NEWSROOM</a>
+        <a href="http://13.125.237.98/contact">CONTACT</a>
+        <a href="http://13.125.237.98/privacy"><b>개인정보처리방침</b></a>
+      </nav>
+      <p class="footer__copy">Copyright 2026 CJ웰케어. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="assets/vendor/splitting.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

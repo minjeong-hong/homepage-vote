@@ -1,0 +1,105 @@
+/* =========================================================
+   CJ Wellcare mockup — design tokens
+   Source: brand-guide/UIUX Guide_Foundation(KR) p.9–25,
+           Visual_Guideline_Basic(KR) 2.2 색상 규정
+   Values marked [가정] are NOT in the guide; chosen for this mockup.
+   ========================================================= */
+
+@font-face { font-family: "CJ ONLYONE"; font-weight: 300; font-display: swap; src: url("../fonts/CJ_ONLYONE_300.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 400; font-display: swap; src: url("../fonts/CJ_ONLYONE_400.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 500; font-display: swap; src: url("../fonts/CJ_ONLYONE_500.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 700; font-display: swap; src: url("../fonts/CJ_ONLYONE_700.woff2") format("woff2"); }
+/* "700 Origin" / "800 Origin" = 헤딩·타이틀 전용 오리지널 글리프 (Foundation p.21) */
+@font-face { font-family: "CJ ONLYONE Origin"; font-weight: 700; font-display: swap; src: url("../fonts/CJ_ONLYONE_700_Origin.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE Origin"; font-weight: 800; font-display: swap; src: url("../fonts/CJ_ONLYONE_800_Origin.woff2") format("woff2"); }
+
+:root {
+  /* ---------- Primary (Foundation p.9 / Visual Basic 2.2.1) ---------- */
+  --cj-red: #EF151E;      /* RGB 239,21,30  · PANTONE RED 032C */
+  --cj-yellow: #FF9700;   /* RGB 255,151,0  · PANTONE 1375C */
+  --cj-blue: #006ECD;     /* RGB 0,110,205  · PANTONE 285C */
+  --cj-black: #000000;
+  --cj-white: #FFFFFF;
+  --cj-gray: #97999B;     /* PANTONE Cool Gray 7C */
+  --cj-gray-logo-web: #646464; /* 웹 접근성용 CJ Gray Logo, RGB 100,100,100 (Visual Basic 2.2.3) */
+
+  /* ---------- Extended scale (Foundation p.10) ---------- */
+  --red-900:#5F080C; --red-800:#8F0C12; --red-700:#BF1018; --red-600:#D6121A; --red-500:#F02C34;
+  --red-400:#F2434B; --red-300:#F57278; --red-200:#F8A1A5; --red-100:#FBD0D2; --red-50:#FDE8E8;
+
+  --yellow-900:#663C00; --yellow-800:#995A00; --yellow-700:#CC7800; --yellow-600:#E58700; --yellow-500:#FFA11A;
+  --yellow-400:#FFAB33; --yellow-300:#FFC066; --yellow-200:#FFD599; --yellow-100:#FFEACC; --yellow-50:#FFF4E6;
+
+  --blue-900:#002C52; --blue-800:#00427B; --blue-700:#0058A4; --blue-600:#0062B8; --blue-500:#1A7CD2;
+  --blue-400:#338BD7; --blue-300:#66A8E1; --blue-200:#99C5EB; --blue-100:#CCE2F5; --blue-50:#E6F0FA;
+
+  /* ---------- Gray scale (Foundation p.11) — CJ Cool Gray 사용 ---------- */
+  --gray-950:#0D0D0D; --gray-900:#1D1F22; --gray-850:#262627; --gray-800:#323334; --gray-750:#3F4041;
+  --gray-700:#4B4D4E; --gray-650:#58595B; --gray-600:#646668; --gray-550:#717375; --gray-500:#7D8082;
+  --gray-450:#8A8C8E; --gray-400:#97999B; --gray-350:#A4A6A7; --gray-300:#B1B2B4; --gray-250:#BEBFC0;
+  --gray-200:#CBCCCD; --gray-150:#D8D9D9; --gray-100:#E5E5E6; --gray-50:#F4F4F6;
+
+  /* ---------- Semantic (Foundation p.11) ---------- */
+  --color-error:#D6131B; --color-success:#22AC38; --color-warning:#F29B39; --color-info:#1A7CD2;
+
+  /* ---------- Role tokens (mockup) ----------
+     가이드: "3개 컬러를 동일하게 쓰기보다 주요 컬러를 선택해 높은 비중으로" (p.9)
+     → 주 컬러 = CJ Blue(과학·신뢰), Yellow/Red = 포인트 [가정: 선택은 목업 판단] */
+  --bg: var(--cj-white);
+  --bg-subtle: var(--gray-50);
+  --bg-warm: var(--yellow-50);
+  --bg-science: var(--blue-50);
+  --bg-inverse: var(--blue-900);
+  --text: var(--gray-950);
+  --text-secondary: var(--gray-650);   /* on white 7.0:1 */
+  --text-tertiary: var(--gray-600);    /* on white 5.77 · Gray50 5.25 · Blue50 5.0 · Yellow50 5.31 (≥4.5:1, p.12) */
+  --text-inverse: var(--cj-white);
+  --text-link: var(--blue-600);
+  --line: var(--gray-100);
+  --line-strong: var(--gray-200);
+  --accent: var(--cj-blue);
+  --accent-strong: var(--blue-700);
+  --accent-warm: var(--cj-yellow);
+  --accent-hot: var(--cj-red);
+
+  /* ---------- Typography (Foundation p.20–24, PC scale) ---------- */
+  --font-sans: "CJ ONLYONE", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; /* 대체 서체: Google Noto Sans (p.25) */
+  --font-display: "CJ ONLYONE Origin", "CJ ONLYONE", "Noto Sans KR", sans-serif;
+
+  --fs-heading-1: 72px;  /* Heading · 700 Origin */
+  --fs-heading-2: 48px;
+  --fs-heading-3: 32px;
+  --fs-heading-4: 24px;
+  --fs-title-1: 40px;    /* Title · 700 Origin / 500 */
+  --fs-title-2: 32px;
+  --fs-title-3: 24px;
+  --fs-body-1: 20px;     /* Body · 400 / 300 */
+  --fs-body-2: 16px;
+  --fs-body-3: 14px;     /* 본문 권장 14px, UI 한정 13/12px 허용 */
+  --fs-caption: 13px;
+  --fs-micro: 12px;
+
+  --lh-title: 1.3;       /* 타이틀 행간 120–140% */
+  --lh-tight: 1.2;
+  --lh-body: 1.6;        /* 2문단 이상 본문 150–175% */
+  --ls-title: -0.025em;  /* 타이틀 자간 -2.5 ~ 0 */
+  --ls-body: -0.01em;    /* 본문 자간 -1.0 ~ 0 */
+
+  /* ---------- Spacing: 8px grid (Foundation p.16) ---------- */
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px; --sp-5: 40px;
+  --sp-6: 48px; --sp-8: 64px; --sp-10: 80px; --sp-12: 96px; --sp-15: 120px; --sp-20: 160px;
+
+  /* ---------- Layout (Foundation p.14–18) ----------
+     6 columns · breakpoint XL ≥1440 / LG 1024–1439
+     PC margin·gutter 값은 가이드에 없음 → [가정] */
+  --container: 1280px;   /* [가정] */
+  --gutter: 32px;        /* [가정] 8의 배수 */
+  --page-margin: 80px;   /* [가정] */
+  --header-h: 80px;      /* [가정] */
+
+  /* ---------- Shape & elevation [가정] ---------- */
+  --radius-s: 8px; --radius-m: 16px; --radius-l: 24px; --radius-xl: 40px; --radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(13,13,13,.06), 0 4px 16px rgba(13,13,13,.06);
+  --shadow-2: 0 8px 40px rgba(0,44,82,.12);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}

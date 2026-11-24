@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Newsroom | CJ웰케어</title>
+<meta name="description" content="CJ웰케어 보도자료, 캠페인, 공지">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .top-story { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--sp-6); align-items: center; }
+  .top-story__media { border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 16 / 11; }
+  .top-story__media img { width: 100%; height: 100%; object-fit: cover; }
+  .top-story h2 { margin: 16px 0; }
+  .news-list { border-top: 1px solid var(--gray-950); }
+  .news-row { display: grid; grid-template-columns: 160px 1fr 140px 120px; gap: var(--sp-4); align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .news-row__thumb { width: 160px; aspect-ratio: 4 / 3; border-radius: var(--radius-m); overflow: hidden; }
+  .news-row__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .news-row h3 { font-size: 19px; font-weight: 500; line-height: 1.5; }
+  .news-row:hover h3 { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .news-row time { font-size: var(--fs-body-3); color: var(--text-tertiary); text-align: right; }
+  .news-row.is-hidden { display: none; }
+  .pager { display: flex; justify-content: center; gap: 8px; margin-top: var(--sp-5); }
+  .pager a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-size: 15px; }
+  .pager a[aria-current] { background: var(--gray-950); color: #fff; }
+  .empty { padding: var(--sp-8) 0; text-align: center; color: var(--text-tertiary); border-bottom: 1px solid var(--line); }
+</style>
+</head>
+<body data-page="news">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="page-hero" aria-labelledby="nw-title">
+    <div class="container">
+      <ol class="breadcrumb"><li><a href="index.html">홈</a></li><li>Newsroom</li></ol>
+      <span class="eyebrow" style="margin-top:32px">Newsroom</span>
+      <h1 id="nw-title" class="display" style="margin:20px 0 0">CJ웰케어의 소식</h1>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:16px" aria-label="주요 소식">
+    <div class="container">
+      <a class="top-story reveal" href="#">
+        <div class="top-story__media"><img src="assets/img/news/news-4.jpg" alt="맥플랜 데일리 프로틴 쉐이크 3종"></div>
+        <div>
+          <p class="news-card__meta" style="margin-top:0"><span class="chip">Top Story</span><span>MAC PLAN</span><span>2026.08.14</span></p>
+          <h2 class="h2">CJ웰케어, MAC 기반 웰니스 브랜드 ‘맥플랜(MAC PLAN)’ 런칭</h2>
+          <p class="body-l">CJ웰케어가 마이크로바이옴 전문기업 CJ바이오사이언스와 손잡고 국내 최초로 미생물의 영양원인 MAC(Microbiota-Accessible Carbohydrates)을 적용한 웰니스 브랜드 ‘맥플랜’을 공식 런칭했다.</p>
+          <span class="link-arrow" style="margin-top:24px">기사 읽기 <i data-ico="arrow"></i></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="list-title">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:24px;align-items:center">
+        <h2 id="list-title" class="h3">전체 소식</h2>
+        <div class="filters" data-filter-group="news" role="group" aria-label="소식 유형 필터">
+          <button data-filter="all" aria-pressed="true">전체<span class="cnt">10</span></button>
+          <button data-filter="press" aria-pressed="false">보도자료<span class="cnt">10</span></button>
+          <button data-filter="campaign" aria-pressed="false" id="campaign">캠페인<span class="cnt">0</span></button>
+          <button data-filter="notice" aria-pressed="false" id="notice">공지 · 결산공고<span class="cnt">0</span></button>
+        </div>
+      </div>
+      <div class="news-list">
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-1.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, 5070 세대 맞춤 식후 케어 ‘RB101 유산균&amp;효소’ 출시</h3><span class="chip chip--gray" style="justify-self:start">바이오코어</span><time>2026.10.14</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-2.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, 한 병으로 채우는 한 끼 영양 ‘맥플랜 뉴트리션 드링크’ 3종 출시</h3><span class="chip chip--gray" style="justify-self:start">MAC PLAN</span><time>2026.09.30</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-3.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, ‘바이오코어 쓰리핏 유산균 다이어트’ 코스트코 전점 입점…오프라인 유통망 확대</h3><span class="chip chip--gray" style="justify-self:start">바이오코어</span><time>2026.08.31</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-4.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, MAC 기반 웰니스 브랜드 ‘맥플랜(MAC PLAN)’ 런칭</h3><span class="chip chip--gray" style="justify-self:start">MAC PLAN</span><time>2026.08.14</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-5.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, 기초영양 전문 브랜드 ‘닥터뉴트리’ 신규 라인업 출시</h3><span class="chip chip--gray" style="justify-self:start">기초영양</span><time>2026.07.06</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-6.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, ‘멜라메이트’ 구미·필름 신제품 출시… 나이트 라이프스타일·취향 맞춰 ‘골라 즐긴다’</h3><span class="chip chip--gray" style="justify-self:start">멜라메이트</span><time>2026.07.01</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-7.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, ‘이너비 슬리밍 쾌변젤리’ 출시… 다이어트·배변 관리 2중 기능 구현</h3><span class="chip chip--gray" style="justify-self:start">InnerB</span><time>2026.05.11</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-8.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, 혈당·체지방 잡는 다이어트 건강기능식품 ‘이너비 슬리밍 컷 루틴’ 출시</h3><span class="chip chip--gray" style="justify-self:start">InnerB</span><time>2026.04.24</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-9.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, 전립선 건강기능식품 ‘전립소 참당귀황기 프리미엄’ 출시</h3><span class="chip chip--gray" style="justify-self:start">전립소</span><time>2026.04.06</time></a>
+        <a class="news-row" data-filter-item="news" data-cat="press" href="#"><span class="news-row__thumb"><img src="assets/img/news/news-10.jpg" alt="" loading="lazy"></span><h3>CJ웰케어, ‘바이오코어 500억 유산균’ 리뉴얼…화사 새 모델 발탁</h3><span class="chip chip--gray" style="justify-self:start">바이오코어</span><time>2026.03.16</time></a>
+        <p class="empty" data-filter-empty="news" hidden>등록된 게시물이 없습니다. 새로운 소식이 곧 업데이트됩니다.</p>
+      </div>
+      <nav class="pager" aria-label="페이지"><a href="#" aria-current="page">1</a><a href="#">2</a></nav>
+    </div>
+  </section>
+
+  <section class="section section--subtle" aria-label="미디어 문의">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:48px">
+      <div><span class="eyebrow">Media Contact</span><h2 class="h3" style="margin-top:12px">취재 · 보도 문의</h2><p class="body-s" style="margin-top:8px">보도자료 원문과 이미지가 필요하시면 홍보 담당자에게 문의해 주세요.</p></div>
+      <a class="btn btn--dark" href="about.html#contact">문의하기 <i data-ico="arrow"></i></a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

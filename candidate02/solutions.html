@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Solutions · 고민별 솔루션 | CJ웰케어</title>
+<meta name="description" content="장 건강, 이너뷰티, 수면·두뇌, 기초영양, K-웰니스. 고민에서 시작하는 CJ웰케어의 12개 브랜드">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .sol-hero { padding: var(--sp-10) 0 var(--sp-6); background: var(--bg-warm); position: relative; overflow: hidden; }
+  .sol-hero .eu-1 { width: 360px; height: 360px; right: -80px; top: -120px; }
+  .sol-hero .eu-2 { width: 150px; height: 150px; right: 0; bottom: 0; }
+  .finder { margin-top: var(--sp-6); display: flex; align-items: center; gap: var(--sp-3); }
+  .finder__q { font-family: var(--font-display); font-size: 24px; }
+  .sci-badge { position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: var(--radius-pill); background: rgba(0,44,82,.88); color: #fff; font-size: var(--fs-micro); font-weight: 500; }
+  .sci-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cj-yellow); }
+  .inside { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .inside__item { padding: var(--sp-4); border-radius: var(--radius-l); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; min-height: 260px; }
+  .inside__brand { font-size: var(--fs-caption); color: var(--blue-200); letter-spacing: .04em; }
+  .inside__item h3 { margin: 12px 0 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.3; }
+  .inside__item p { color: var(--blue-100); font-size: 15px; }
+  .inside__item .link-arrow { margin-top: auto; padding-top: 16px; }
+  .result-count { font-size: var(--fs-body-3); color: var(--text-tertiary); }
+</style>
+</head>
+<body data-page="solutions">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="sol-hero" aria-labelledby="sol-title">
+    <span class="eu eu-1" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0V100C45 100 0 55 0 0Z" fill="#FF9700" opacity=".9"/></svg></span>
+    <span class="eu eu-2" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 100H0C0 45 45 0 100 0Z" fill="#EF151E"/></svg></span>
+    <div class="container rel">
+      <ol class="breadcrumb"><li><a href="index.html">홈</a></li><li>Solutions</li></ol>
+      <span class="eyebrow" style="margin-top:32px">Solutions</span>
+      <h1 id="sol-title" class="display" style="margin:20px 0 24px">고민에서 시작하는<br>나만의 솔루션</h1>
+      <p class="lead" style="max-width:640px">장 건강부터 이너뷰티, 수면, 기초영양, K-웰니스까지. 12개 브랜드를 당신의 고민과 하루의 흐름에 맞춰 찾아보세요.</p>
+      <div class="finder">
+        <span class="finder__q">요즘 가장 신경 쓰이는 건?</span>
+        <div class="filters" data-filter-group="brand" role="group" aria-label="고민별 필터">
+          <button data-filter="all" aria-pressed="true">전체<span class="cnt">12</span></button>
+          <button data-filter="gut" aria-pressed="false">장 건강<span class="cnt">2</span></button>
+          <button data-filter="beauty" aria-pressed="false">이너뷰티<span class="cnt">1</span></button>
+          <button data-filter="mental" aria-pressed="false">수면 · 두뇌<span class="cnt">2</span></button>
+          <button data-filter="nutrition" aria-pressed="false">기초영양<span class="cnt">5</span></button>
+          <button data-filter="kwellness" aria-pressed="false">K-웰니스<span class="cnt">2</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:64px" aria-label="브랜드 목록">
+    <div class="container">
+      <div class="brand-grid">
+        <a class="brand-card" data-filter-item="brand" data-cat="gut" href="brand-biocore.html"><div class="brand-card__media"><img src="assets/img/brand/biocore.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Gut Health</span><span class="sci-badge">CJLP133</span></div><div class="brand-card__body"><strong>바이오코어 <i data-ico="arrow"></i></strong><p>유산균의 코어가 남다르니깐! 고함량, 고기능성 유산균의 기준</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="gut" href="science.html#bioscience"><div class="brand-card__media"><img src="assets/img/brand/macplan.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Gut Health</span><span class="sci-badge">CJ바이오사이언스</span></div><div class="brand-card__body"><strong>맥플랜 MAC PLAN <i data-ico="arrow"></i></strong><p>식이섬유 섭취의 새로운 기준, 미생물 밸런스를 위한 MACPLAN</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="beauty" href="#"><div class="brand-card__media"><img src="assets/img/brand/innerb.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Beauty</span></div><div class="brand-card__body"><strong>이너비 InnerB <i data-ico="arrow"></i></strong><p>Always Be Me, 균형 잡힌 이너뷰티 루틴을 전하는 브랜드</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="mental" href="#"><div class="brand-card__media"><img src="assets/img/brand/melamate.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Mental</span><span class="sci-badge">국내 최초 식물성 멜라토닌 구미</span></div><div class="brand-card__body"><strong>멜라메이트 <i data-ico="arrow"></i></strong><p>나의 첫 나이트 메이트, 오늘 밤은 혼자가 아니야</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="mental" href="#"><div class="brand-card__media"><img src="assets/img/brand/memorymate.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Mental</span></div><div class="brand-card__body"><strong>메모리메이트 &amp; 브레인메이트 <i data-ico="arrow"></i></strong><p>선명하고 또렷한 하루, 매일의 일상을 지키는 두뇌 건강 케어</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="nutrition" href="#"><div class="brand-card__media"><img src="assets/img/brand/basic.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Basic Nutrition</span></div><div class="brand-card__body"><strong>닥터뉴트리 Dr.Nutri <i data-ico="arrow"></i></strong><p>나만의 건강관리 솔루션, 좋은 원료와 합리적 가격으로 꾸준하게</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="nutrition" href="#"><div class="brand-card__media"><img src="assets/img/brand/eyecian.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Basic Nutrition</span></div><div class="brand-card__body"><strong>아이시안 <i data-ico="arrow"></i></strong><p>현대인의 맞춤 눈 건강 케어, EYE + SEE + 안(安)</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="nutrition" href="#"><div class="brand-card__media"><img src="assets/img/brand/jeonripso.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Basic Nutrition</span><span class="sci-badge">개별인정형 원료</span></div><div class="brand-card__body"><strong>전립소 <i data-ico="arrow"></i></strong><p>남성의 자신감과 활력을 위한 전립선 건강 솔루션</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="nutrition" href="#"><div class="brand-card__media"><img src="assets/img/brand/omanbo.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Basic Nutrition</span></div><div class="brand-card__body"><strong>관절오만보 <i data-ico="arrow"></i></strong><p>오만보를 걷는 열정을 만드는 관절 케어 브랜드</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="nutrition" href="#"><div class="brand-card__media"><img src="assets/img/brand/yamgroo.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">Kids</span></div><div class="brand-card__body"><strong>얌그루 <i data-ico="arrow"></i></strong><p>잘 먹고 바르게 성장하는 우리 아이를 위한 건강 솔루션</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="kwellness" href="lifestyle.html#heritage"><div class="brand-card__media"><img src="assets/img/brand/hanppuri.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">K-Wellness</span><span class="sci-badge">흑삼 FDA NDI</span></div><div class="brand-card__body"><strong>한뿌리 <i data-ico="arrow"></i></strong><p>정통 보양의 변치 않는 기준, 시간과 정성으로 빚어낸 한뿌리</p></div></a>
+        <a class="brand-card" data-filter-item="brand" data-cat="kwellness" href="lifestyle.html#heritage"><div class="brand-card__media"><img src="assets/img/brand/jeil.jpg" alt="" loading="lazy"><span class="brand-card__tag chip">K-Wellness</span></div><div class="brand-card__body"><strong>제일건강원 <i data-ico="arrow"></i></strong><p>매일의 일상을 깨우는 새로운 기준, 현대인을 위한 제일건강원</p></div></a>
+      </div>
+      <p class="caption" style="margin-top:32px">목업 안내: 브랜드 상세는 <a class="link-arrow" href="brand-biocore.html" style="display:inline">바이오코어</a> 페이지를 대표 템플릿으로 제작했습니다.</p>
+    </div>
+  </section>
+
+  <section class="section section--inverse" style="background:var(--blue-900)" aria-labelledby="inside-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__title"><span class="eyebrow">Science Inside</span><h2 id="inside-title" class="h1" style="margin-top:16px">모든 브랜드 안에는<br>과학이 있습니다</h2><p class="lead">브랜드마다 출발점이 된 기술과 근거를 함께 보여드립니다.</p></div>
+        <a class="btn btn--light" href="evidence.html">연구 근거 전체 보기 <i data-ico="arrow"></i></a>
+      </div>
+      <div class="inside reveal">
+        <div class="inside__item"><span class="inside__brand">바이오코어</span><h3>CJLP133<br>개별인정형 균주</h3><p>국내 개발 유산균주 최초 개별인정형(2013). 국내 상온 최대 보장균수 500억 CFU.</p><a class="link-arrow" href="evidence.html#study-cjlp133">근거 보기 <i data-ico="arrow"></i></a></div>
+        <div class="inside__item"><span class="inside__brand">맥플랜</span><h3>MAC<br>미생물의 영양원</h3><p>CJ바이오사이언스의 마이크로바이옴 연구 역량을 활용한 국내 최초 MAC 웰니스 브랜드.</p><a class="link-arrow" href="science.html#bioscience">근거 보기 <i data-ico="arrow"></i></a></div>
+        <div class="inside__item"><span class="inside__brand">전립소</span><h3>SHPro®<br>참당귀 · 황기 조성물</h3><p>농촌진흥청과 국내 연구진이 공동 개발한 전립선 건강 개별인정형 원료. 45~75세 남성 84명 12주 인체적용시험.</p><a class="link-arrow" href="#">근거 보기 <i data-ico="arrow"></i></a></div>
+        <div class="inside__item"><span class="inside__brand">한뿌리</span><h3>구증구포<br>흑삼 기술</h3><p>아홉 번 찌고 말린 흑삼과 저분자 사포닌 기술. 구증구포 흑삼 FDA NDI 승인(2016).</p><a class="link-arrow" href="lifestyle.html#heritage">근거 보기 <i data-ico="arrow"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="구매 안내">
+    <div class="container">
+      <div class="split" style="background:var(--bg-subtle);border-radius:var(--radius-xl);padding:56px 64px;gap:48px">
+        <div><span class="eyebrow">Shop</span><h2 class="h2" style="margin-top:16px">CJ웰케어 제품은<br>CJ더마켓에서 만나보세요</h2></div>
+        <div style="display:flex;justify-content:flex-end;gap:12px"><a class="btn btn--dark" href="https://www.cjthemarket.com/" target="_blank" rel="noopener">CJ더마켓 바로가기 <i data-ico="arrow"></i></a><a class="btn btn--ghost" href="lifestyle.html#routine">나의 루틴 만들기</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><p class="disclaimer"><b>건강기능식품 안내</b> · 건강기능식품은 질병의 예방 및 치료를 위한 의약품이 아닙니다. 제품 정보와 문구는 기존 CJ웰케어 홈페이지 브랜드 소개를 인용했습니다.</p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

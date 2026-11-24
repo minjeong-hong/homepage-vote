@@ -1,0 +1,177 @@
+/* =========================================================
+   CJ Wellcare mockup v8 "SEED 적용" — design tokens
+   구조(역할 이름·계층·스케일)는 SEED Design(seed-design.io, daangn/seed-design, Apache-2.0)을 따르고,
+   값(색·서체·글자 크기)은 CJ UI/UX Guide Foundation(docs/brand-tokens.md)에서 가져왔다.
+   - palette  : CJ Primary · Extended · Cool Gray · Semantic 색 (리터럴 색은 이 파일에만 있다)
+   - semantic : SEED color role (bg / fg / stroke) → palette 참조
+   - scale    : SEED dimension · radius · shadow · duration (색·글자와 무관한 UX 스케일이라 SEED 값 그대로)
+   - type     : SEED t-단계 이름에 CJ PC 스케일 크기만 연결 (SEED의 11·18·22·26·28px 단계는 쓰지 않는다)
+   [가정] 표시는 CJ 가이드에 없는 값이다. 근거는 docs/v8-seed.md.
+   라이트 전용: CJ 가이드에 다크 팔레트가 없어 다크 모드는 만들지 않았다.
+   ========================================================= */
+
+@font-face { font-family: "CJ ONLYONE"; font-weight: 400; font-display: swap; src: url("../fonts/CJ_ONLYONE_400.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 500; font-display: swap; src: url("../fonts/CJ_ONLYONE_500.woff2") format("woff2"); }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 700; font-display: swap; src: url("../fonts/CJ_ONLYONE_700.woff2") format("woff2"); }
+/* 웹 경량 파일에는 한자가 없다. 본문에 나오는 두 글자(安 非)만 정식 CJ ONLYONE에서 추려 보탰다 — 다른 서체가 대신 그려지지 않게. */
+@font-face { font-family: "CJ ONLYONE"; font-weight: 400; font-display: swap; src: url("../fonts/CJ_ONLYONE_400_hanja.woff2") format("woff2"); unicode-range: U+5B89, U+975E; }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 500; font-display: swap; src: url("../fonts/CJ_ONLYONE_500_hanja.woff2") format("woff2"); unicode-range: U+5B89, U+975E; }
+@font-face { font-family: "CJ ONLYONE"; font-weight: 700; font-display: swap; src: url("../fonts/CJ_ONLYONE_700_hanja.woff2") format("woff2"); unicode-range: U+5B89, U+975E; }
+@font-face { font-family: "CJ ONLYONE Origin"; font-weight: 700; font-display: swap; src: url("../fonts/CJ_ONLYONE_700_Origin.woff2") format("woff2"); }
+
+:root {
+  color-scheme: light;
+
+  /* ---------- palette (CJ Foundation p.9–11) ---------- */
+  --seed-color-palette-static-white: #FFFFFF;
+  --seed-color-palette-gray-50: #F4F4F6;
+  --seed-color-palette-gray-100: #E5E5E6;
+  --seed-color-palette-gray-150: #D8D9D9;
+  --seed-color-palette-gray-200: #CBCCCD;
+  --seed-color-palette-gray-300: #B1B2B4;
+  --seed-color-palette-gray-550: #717375;
+  --seed-color-palette-gray-600: #646668;
+  --seed-color-palette-gray-650: #58595B;
+  --seed-color-palette-gray-800: #323334;
+  --seed-color-palette-gray-900: #1D1F22;
+  --seed-color-palette-gray-950-alpha-50: #0D0D0D0A;   /* Gray 950, 4% — pressed/hover 덧칠 */
+  --seed-color-palette-gray-950-alpha-100: #0D0D0D0F;  /* Gray 950, 6% — 회색 면 위의 약한 채움 */
+  --seed-color-palette-gray-950-alpha-200: #0D0D0D1A;  /* Gray 950, 10% */
+  --seed-color-palette-blue-50: #E6F0FA;
+  --seed-color-palette-blue-100: #CCE2F5;
+  --seed-color-palette-blue-200: #99C5EB;
+  --seed-color-palette-blue-500: #1A7CD2;              /* = CJ Semantic Information */
+  --seed-color-palette-blue-primary: #006ECD;          /* CJ Blue */
+  --seed-color-palette-blue-700: #0058A4;
+  --seed-color-palette-blue-800: #00427B;
+  --seed-color-palette-red-50: #FDE8E8;
+  --seed-color-palette-red-100: #FBD0D2;
+  --seed-color-palette-red-semantic: #D6131B;          /* CJ Semantic Error */
+  --seed-color-palette-red-800: #8F0C12;
+  --seed-color-palette-yellow-50: #FFF4E6;
+  --seed-color-palette-yellow-200: #FFD599;
+  --seed-color-palette-yellow-semantic: #F29B39;       /* CJ Semantic Warning */
+  --seed-color-palette-yellow-900: #663C00;
+  --seed-color-palette-green-semantic: #22AC38;        /* CJ Semantic Success */
+  --seed-color-palette-green-50: #E9F7EB;              /* [가정] Success에 Extended scale 공식(흰색 90%) 적용 */
+  --seed-color-palette-green-200: #A7DEAF;             /* [가정] 같은 공식(흰색 60%) */
+  --seed-color-palette-green-800: #146722;             /* [가정] 같은 공식(×0.6) */
+
+  /* ---------- semantic color roles (SEED color-role) ---------- */
+  /* layer */
+  --seed-color-bg-layer-basement: var(--seed-color-palette-gray-50);
+  --seed-color-bg-layer-default: var(--seed-color-palette-static-white);
+  --seed-color-bg-layer-default-pressed: var(--seed-color-palette-gray-50);
+  --seed-color-bg-layer-floating: var(--seed-color-palette-static-white);
+  --seed-color-bg-layer-floating-pressed: var(--seed-color-palette-gray-50);
+  /* neutral */
+  --seed-color-bg-neutral-weak: var(--seed-color-palette-gray-50);
+  --seed-color-bg-neutral-weak-pressed: var(--seed-color-palette-gray-100);
+  --seed-color-bg-neutral-weak-alpha: var(--seed-color-palette-gray-950-alpha-100);          /* layer-basement 위에서도 보이는 약한 채움 */
+  --seed-color-bg-neutral-weak-alpha-pressed: var(--seed-color-palette-gray-950-alpha-200);
+  --seed-color-bg-neutral-muted: var(--seed-color-palette-gray-100);
+  --seed-color-bg-neutral-solid: var(--seed-color-palette-gray-900);
+  --seed-color-bg-neutral-solid-pressed: var(--seed-color-palette-gray-800);
+  --seed-color-bg-transparent-pressed: var(--seed-color-palette-gray-950-alpha-50);
+  --seed-color-bg-disabled: var(--seed-color-palette-gray-100);
+  /* brand = CJ Blue */
+  --seed-color-bg-brand-solid: var(--seed-color-palette-blue-primary);
+  --seed-color-bg-brand-solid-pressed: var(--seed-color-palette-blue-700);
+  --seed-color-bg-brand-weak: var(--seed-color-palette-blue-50);
+  --seed-color-bg-brand-weak-pressed: var(--seed-color-palette-blue-100);
+  /* status = CJ Semantic */
+  --seed-color-bg-informative-solid: var(--seed-color-palette-blue-500);
+  --seed-color-bg-informative-weak: var(--seed-color-palette-blue-50);
+  --seed-color-bg-informative-weak-pressed: var(--seed-color-palette-blue-100);
+  --seed-color-bg-positive-solid: var(--seed-color-palette-green-semantic);
+  --seed-color-bg-positive-weak: var(--seed-color-palette-green-50);
+  --seed-color-bg-warning-solid: var(--seed-color-palette-yellow-semantic);
+  --seed-color-bg-warning-weak: var(--seed-color-palette-yellow-50);
+  --seed-color-bg-critical-solid: var(--seed-color-palette-red-semantic);
+  --seed-color-bg-critical-weak: var(--seed-color-palette-red-50);
+
+  --seed-color-fg-neutral: var(--seed-color-palette-gray-900);
+  --seed-color-fg-neutral-muted: var(--seed-color-palette-gray-650);
+  --seed-color-fg-neutral-subtle: var(--seed-color-palette-gray-600);
+  --seed-color-fg-placeholder: var(--seed-color-palette-gray-550);
+  --seed-color-fg-disabled: var(--seed-color-palette-gray-300);
+  --seed-color-fg-on-neutral-solid: var(--seed-color-palette-static-white);
+  --seed-color-fg-on-brand-solid: var(--seed-color-palette-static-white);
+  --seed-color-fg-brand: var(--seed-color-palette-blue-primary);
+  --seed-color-fg-brand-contrast: var(--seed-color-palette-blue-700);
+  --seed-color-fg-informative: var(--seed-color-palette-blue-700);
+  --seed-color-fg-informative-contrast: var(--seed-color-palette-blue-800);
+  --seed-color-fg-positive: var(--seed-color-palette-green-800);
+  --seed-color-fg-positive-contrast: var(--seed-color-palette-green-800);
+  --seed-color-fg-warning-contrast: var(--seed-color-palette-yellow-900);
+  --seed-color-fg-critical: var(--seed-color-palette-red-semantic);
+  --seed-color-fg-critical-contrast: var(--seed-color-palette-red-800);
+
+  --seed-color-stroke-neutral-subtle: var(--seed-color-palette-gray-100);   /* 같은 종류 항목 사이(리스트 행, 표 행) */
+  --seed-color-stroke-neutral-muted: var(--seed-color-palette-gray-150);    /* 의미가 바뀌는 구획(헤더/본문, 섹션) */
+  --seed-color-stroke-neutral-weak: var(--seed-color-palette-gray-200);     /* 형태를 정의하는 외곽선(카드, 입력, outline 버튼) */
+  --seed-color-stroke-neutral-solid: var(--seed-color-palette-gray-550);    /* 입력 필드 테두리(흰 배경 대비 3:1 이상) */
+  --seed-color-stroke-neutral-contrast: var(--seed-color-palette-gray-900);
+  --seed-color-stroke-brand-weak: var(--seed-color-palette-blue-200);
+  --seed-color-stroke-brand-solid: var(--seed-color-palette-blue-primary);
+  --seed-color-stroke-informative-weak: var(--seed-color-palette-blue-200);
+  --seed-color-stroke-positive-weak: var(--seed-color-palette-green-200);
+  --seed-color-stroke-warning-weak: var(--seed-color-palette-yellow-200);
+  --seed-color-stroke-critical-weak: var(--seed-color-palette-red-100);
+  --seed-color-stroke-critical-solid: var(--seed-color-palette-red-semantic);
+  --seed-color-stroke-focus-ring: var(--seed-color-palette-blue-500);
+
+  /* ---------- elevation (SEED shadow s1–s3: 떠 있는 요소에만) ---------- */
+  --seed-shadow-s1: 0 1px 4px 0 #00000014;
+  --seed-shadow-s2: 0 2px 10px 0 #0000001A;
+  --seed-shadow-s3: 0 4px 16px 0 #0000001F;
+
+  /* ---------- dimension (SEED 4px 스케일) ---------- */
+  --seed-dimension-x0_5: 2px;  --seed-dimension-x1: 4px;   --seed-dimension-x1_5: 6px;  --seed-dimension-x2: 8px;
+  --seed-dimension-x2_5: 10px; --seed-dimension-x3: 12px;  --seed-dimension-x3_5: 14px; --seed-dimension-x4: 16px;
+  --seed-dimension-x4_5: 18px; --seed-dimension-x5: 20px;  --seed-dimension-x6: 24px;   --seed-dimension-x7: 28px;
+  --seed-dimension-x8: 32px;   --seed-dimension-x9: 36px;  --seed-dimension-x10: 40px;  --seed-dimension-x12: 48px;
+  --seed-dimension-x13: 52px;  --seed-dimension-x14: 56px; --seed-dimension-x16: 64px;
+  --seed-dimension-x20: 80px;  /* 확장: CJ 레이아웃 간격의 최댓값 80 (SEED 스케일은 64까지) */
+  --seed-dimension-spacing-x-global-gutter: var(--seed-dimension-x8);       /* PC: SEED Layout의 md 이상 값 32px */
+  --seed-dimension-spacing-x-between-chips: var(--seed-dimension-x2);
+  --seed-dimension-spacing-y-component-default: var(--seed-dimension-x3);
+  --seed-dimension-spacing-y-between-text: var(--seed-dimension-x1_5);
+  --seed-dimension-spacing-y-nav-to-title: var(--seed-dimension-x5);
+  --seed-dimension-spacing-y-screen-bottom: var(--seed-dimension-x14);
+  --seed-dimension-layout-max-width-wide: 1280px;    /* SEED Layout: 넓게 훑어보는 화면의 최대 폭 */
+  --seed-dimension-layout-max-width-content: 1040px; /* SEED Layout: 읽는 콘텐츠의 기본 최대 폭 */
+  --seed-dimension-touch-target: 44px;               /* SEED inclusive design: 44×44px */
+
+  /* ---------- radius (SEED) ---------- */
+  --seed-radius-r1: 4px;  --seed-radius-r1_5: 6px; --seed-radius-r2: 8px;  --seed-radius-r2_5: 10px;
+  --seed-radius-r3: 12px; --seed-radius-r4: 16px;  --seed-radius-r5: 20px; --seed-radius-r6: 24px;
+  --seed-radius-full: 9999px;
+
+  /* ---------- motion (SEED) ---------- */
+  --seed-duration-d2: 100ms; --seed-duration-d3: 150ms; --seed-duration-d4: 200ms; --seed-duration-d6: 300ms;
+  --seed-timing-function-easing: cubic-bezier(.35, 0, .35, 1);
+  --seed-timing-function-enter: cubic-bezier(0, 0, .15, 1);
+  --seed-timing-function-exit: cubic-bezier(.35, 0, 1, 1);
+
+  /* ---------- typography: SEED t-단계 이름 ← CJ PC 스케일(Foundation p.20–25) ---------- */
+  --seed-font-family: "CJ ONLYONE", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --seed-font-family-heading: "CJ ONLYONE Origin", "CJ ONLYONE", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; /* Heading · Title 전용 글리프 */
+  --seed-font-weight-regular: 400;
+  --seed-font-weight-medium: 500;
+  --seed-font-weight-bold: 700;
+  /* 본문·UI: 행간 150–175% (CJ) */
+  --seed-font-size-t2: 0.75rem;   --seed-line-height-t2: 1.125rem;  /* 12/18  CJ UI 한정 */
+  --seed-font-size-t3: 0.8125rem; --seed-line-height-t3: 1.25rem;   /* 13/20  CJ UI 한정 */
+  --seed-font-size-t4: 0.875rem;  --seed-line-height-t4: 1.375rem;  /* 14/22  CJ Body 3 */
+  --seed-font-size-t5: 1rem;      --seed-line-height-t5: 1.625rem;  /* 16/26  CJ Body 2 */
+  --seed-font-size-t7: 1.25rem;   --seed-line-height-t7: 2rem;      /* 20/32  CJ Body 1 */
+  /* 제목: 행간 120–140% (CJ) */
+  --seed-font-size-t9: 1.5rem;    --seed-line-height-t9: 2rem;      /* 24/32  CJ Heading 4 · Title 3 */
+  --seed-font-size-t12: 2rem;     --seed-line-height-t12: 2.625rem; /* 32/42  CJ Heading 3 · Title 2 */
+  --seed-font-size-t13: 2.5rem;   --seed-line-height-t13: 3.25rem;  /* 40/52  CJ Title 1 */
+  --seed-font-size-t14: 3rem;     --seed-line-height-t14: 3.75rem;  /* 48/60  CJ Heading 2 */
+  --seed-font-size-t15: 4.5rem;   --seed-line-height-t15: 5.5rem;   /* 72/88  CJ Heading 1 — 확장(SEED 스케일은 t14까지) */
+  --seed-letter-spacing-title: -0.025em;  /* CJ: 타이틀 -2.5 ~ 0 */
+  --seed-letter-spacing-body: -0.01em;    /* CJ: 본문 -1.0 ~ 0 */
+}
